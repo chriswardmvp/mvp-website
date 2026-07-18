@@ -24,9 +24,22 @@
       font-weight: 600;
       letter-spacing: 0.5px;
     }
+    #loaded-time {
+      margin-top: 1rem;
+      font-size: 1rem;
+      font-weight: 400;
+      color: #9a9a9a;
+    }
   </style>
 </head>
 <body>
-  <p>MVP Baseball - temporary website holder</p>
+  <div>
+    <p>MVP Baseball - temporary website holder</p>
+    <p id="loaded-time"></p>
+  </div>
+  <script>
+    document.getElementById("loaded-time").textContent =
+      "Page loaded: " + new Date().toUTCString();
+  </script>
 </body>
 </html>
