@@ -1,0 +1,8 @@
+# Netlify configuration for a plain HTML/CSS site
+# No build step is needed — Netlify just publishes the files as-is.
+
+[build]
+  # Serve the site from the repository root.
+  publish = "."
+  # No build command for a static HTML site.
+  command = ""
