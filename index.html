@@ -1,45 +1,1977 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MVP Baseball, LLC</title>
-  <style>
-    html, body {
-      height: 100%;
-      margin: 0;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MV Prospects Baseball | Nashua, NH</title>
+<meta name="description" content="MV Prospects Baseball is a travel baseball program in Nashua, NH serving players 9U through 17U, with a dedicated training facility, private lessons, and clinics.">
+<meta property="og:title" content="MV Prospects Baseball | Nashua, NH">
+<meta property="og:description" content="Travel baseball program in Nashua, NH for players 9U through 17U. Teams, tryouts, private lessons, clinics, and our own training facility.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: #fff; color: #111; line-height: 1.6; }
+  a, button, [onclick] { cursor: pointer; }
+  a { text-decoration: none; color: inherit; }
+  img { max-width: 100%; display: block; }
+
+  :root {
+    --blue:       #1B3FA0;
+    --blue-dark:  #122B6E;
+    --blue-light: #2E56C8;
+    --black:      #0D0D0D;
+    --gold:       #D4A017;
+    --white:      #ffffff;
+    --gray-50:    #F7F8FA;
+    --gray-100:   #ECEEF2;
+    --gray-400:   #9AA0AD;
+    --gray-700:   #3D4452;
+    --nav-h:      72px;
+  }
+
+  ::selection { background: var(--blue); color: var(--white); }
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline: 2px solid var(--blue-light); outline-offset: 2px;
+  }
+  :root { --ease-out: cubic-bezier(0.22, 1, 0.36, 1); }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
     }
-    body {
-      background: #0a0a0a;
-      color: #f2f2f2;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      text-align: center;
-      padding: 1.5rem;
+  }
+
+  h1,h2,h3,h4,h5 { font-family: 'Oswald', sans-serif; font-weight: 700; line-height: 1.15; letter-spacing: 0.01em; }
+  h1 { font-size: clamp(2.2rem, 5vw, 3.8rem); }
+  h2 { font-size: clamp(1.6rem, 3.5vw, 2.6rem); }
+  h3 { font-size: 1.3rem; }
+
+  /* NAV */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    height: var(--nav-h);
+    background: var(--black);
+    border-bottom: 3px solid var(--blue);
+    display: flex; align-items: center;
+    padding: 0 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+  .nav-logo { display: flex; align-items: center; flex-shrink: 0; }
+  .nav-logo img { height: 48px; width: auto; }
+  .nav-links {
+    display: flex; align-items: center; gap: 0;
+    margin-left: auto; list-style: none;
+  }
+  .nav-links li { position: relative; }
+  .nav-links a, .nav-links button {
+    display: block; padding: 0 0.9rem;
+    height: var(--nav-h); line-height: var(--nav-h);
+    font-family: 'Oswald', sans-serif; font-size: 0.9rem; font-weight: 500;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: rgba(255,255,255,0.8); background: none; border: none;
+    transition: color 0.15s; white-space: nowrap;
+  }
+  .nav-links a:hover, .nav-links button:hover { color: var(--white); }
+  .nav-links li:hover .nav-dropdown { display: grid; }
+  .nav-dropdown {
+    display: none;
+    position: absolute; top: calc(var(--nav-h) - 3px); left: 0;
+    background: var(--white);
+    border-top: 3px solid var(--blue);
+    border-bottom: 3px solid var(--blue);
+    grid-template-columns: repeat(3, 1fr);
+    min-width: 480px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    z-index: 100;
+  }
+  .nav-dropdown a {
+    display: block; height: auto; line-height: 1;
+    padding: 0.7rem 1rem; font-size: 0.82rem;
+    color: var(--gray-700); border-right: 1px solid var(--gray-100);
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .nav-dropdown a:hover { background: var(--gray-50); color: var(--blue); }
+  .nav-cta {
+    margin-left: 0.8rem;
+    padding: 0 1.2rem !important;
+    height: 38px !important; line-height: 38px !important;
+    background: var(--blue) !important; color: var(--white) !important;
+    border-radius: 4px; font-size: 0.82rem !important;
+    transition: background 0.15s !important; align-self: center;
+  }
+  .nav-cta:hover { background: var(--blue-dark) !important; color: var(--white) !important; }
+  .nav-hamburger {
+    display: none; margin-left: auto;
+    background: none; border: none; padding: 8px;
+    flex-direction: column; gap: 5px; cursor: pointer;
+    z-index: 1001;
+  }
+  .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; }
+  .mobile-menu {
+    display: none; position: fixed; top: var(--nav-h); left: 0; right: 0;
+    background: var(--black); border-top: 1px solid rgba(255,255,255,0.08);
+    z-index: 999; padding: 1rem 0;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    max-height: calc(100vh - var(--nav-h)); overflow-y: auto;
+  }
+  .mobile-menu.open { display: block; animation: menuSlide 0.28s var(--ease-out) both; }
+  @keyframes menuSlide {
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .mobile-menu a, .mobile-menu button {
+    display: block; padding: 0.85rem 1.5rem;
+    font-family: 'Oswald', sans-serif; font-size: 1rem;
+    font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase;
+    color: rgba(255,255,255,0.8); background: none; border: none;
+    border-bottom: 1px solid rgba(255,255,255,0.08); text-align: left; width: 100%;
+  }
+  .mobile-menu a:hover, .mobile-menu button:hover { color: var(--white); background: rgba(255,255,255,0.05); }
+
+  .page { display: none; padding-top: var(--nav-h); min-height: 100vh; }
+  .page.active { display: block; }
+
+  /* SECTION HEADER with diagonal stripe */
+  .section-header {
+    display: inline-flex; align-items: center; gap: 0.8rem;
+    margin-bottom: 2.5rem;
+  }
+  .section-header::before { display: none; }
+  .section-header h2 { color: var(--black); }
+  .section-header.white h2 { color: var(--white); }
+  .section-header.center { margin: 0 auto 2.5rem; }
+
+  /* BUTTONS */
+  .btn {
+    display: inline-block;
+    font-family: 'Oswald', sans-serif; font-size: 0.9rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.75rem 1.8rem; border-radius: 4px; border: 2px solid transparent;
+    transition: all 0.15s;
+  }
+  .btn-primary { background: var(--blue); color: var(--white); border-color: var(--blue); }
+  .btn-primary:hover { background: var(--blue-dark); border-color: var(--blue-dark); }
+  .btn-outline { background: transparent; color: var(--white); border-color: var(--white); }
+  .btn-outline:hover { background: var(--white); color: var(--blue); }
+  .btn-outline-blue { background: transparent; color: var(--blue); border-color: var(--blue); }
+  .btn-outline-blue:hover { background: var(--blue); color: var(--white); }
+  .btn-gold { background: var(--gold); color: var(--black); border-color: var(--gold); }
+  .btn-gold:hover { background: #b8880f; border-color: #b8880f; }
+
+  .img-placeholder {
+    background: var(--gray-100); display: flex; align-items: center; justify-content: center;
+    color: var(--gray-400); font-size: 0.8rem;
+    font-family: 'Oswald', sans-serif; letter-spacing: 0.05em; text-transform: uppercase;
+  }
+
+  /* FORMS */
+  .form-group { margin-bottom: 1.1rem; }
+  .form-group label {
+    display: block; font-size: 0.8rem; font-weight: 500;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    color: var(--gray-700); margin-bottom: 0.4rem;
+  }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 0.65rem 0.9rem;
+    border: 1.5px solid var(--gray-100); border-radius: 4px;
+    font-family: 'Inter', sans-serif; font-size: 0.9rem;
+    color: var(--black); background: var(--white);
+    transition: border-color 0.15s; outline: none;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--blue); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-error {
+    display:none; background:#fdecea; border:1px solid #f5c6cb;
+    border-radius:4px; padding:0.6rem 0.9rem;
+    color:#c0392b; font-size:0.85rem; margin-bottom:0.8rem;
+    animation: fadeInMsg 0.3s var(--ease-out);
+  }
+  .form-success {
+    display: none; background: #e8f5e9; border: 1px solid #a5d6a7;
+    border-radius: 4px; padding: 1rem; text-align: center;
+    color: #2e7d32; font-size: 0.9rem; margin-top: 0.8rem;
+    animation: fadeInMsg 0.35s var(--ease-out);
+  }
+  @keyframes fadeInMsg {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* SECTIONS */
+  .section { padding: 5rem clamp(1.5rem, 6vw, 6rem); }
+  .section-alt { background: var(--gray-50); }
+
+  /* SPLIT */
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .split-img { border-radius: 6px; overflow: hidden; height: 400px; }
+  .split-text p { color: var(--gray-700); margin-bottom: 1.5rem; font-size: 0.95rem; }
+  @media (max-width: 768px) { .split { grid-template-columns: 1fr; } .split-img { height: 260px; order: -1; } }
+
+  /* ── HOME PAGE ─────────────────────────────────── */
+
+  /* Hero: baseball-field-style dark grass with stitching accent */
+  .hero {
+    position: relative;
+    height: calc(90vh - var(--nav-h));
+    min-height: 560px;
+    background: var(--black);
+    display: flex; align-items: center; overflow: hidden;
+  }
+  /* Baseball diamond graphic in background */
+  .hero-diamond {
+    position: absolute; right: -40px; top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 520px; height: 520px;
+    border: 3px solid rgba(255,255,255,0.04);
+    background: rgba(27,63,160,0.12);
+    z-index: 1; pointer-events: none;
+  }
+  .hero-diamond::before {
+    content: '';
+    position: absolute; inset: 40px;
+    border: 2px solid rgba(212,160,23,0.15);
+  }
+  .hero-stitches {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 1; pointer-events: none; overflow: hidden;
+  }
+  /* SVG baseball stitching arcs in top-right */
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(115deg, rgba(13,13,13,0.92) 0%, rgba(27,63,160,0.7) 55%, rgba(13,13,13,0.85) 100%);
+    z-index: 2;
+  }
+  .hero > img {
+    animation: heroSettle 1.6s var(--ease-out) both;
+  }
+  @keyframes heroSettle {
+    from { transform: scale(1.06); }
+    to   { transform: scale(1); }
+  }
+  .hero-content {
+    position: relative; z-index: 3;
+    padding: 0 clamp(1.5rem, 6vw, 6rem);
+    max-width: 800px;
+  }
+  .hero h1 { color: var(--white); margin-bottom: 1.2rem; text-shadow: 0 2px 16px rgba(0,0,0,0.4); }
+  .hero-sub {
+    color: rgba(255,255,255,0.78); font-size: 1.05rem;
+    max-width: 540px; margin-bottom: 2rem; font-weight: 300; line-height: 1.7;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  /* Stats bar */
+  .stats-bar {
+    background: var(--blue); padding: 1.4rem 2rem;
+    display: flex; justify-content: center; gap: clamp(2rem, 6vw, 6rem); flex-wrap: wrap;
+  }
+  .stat-item { text-align: center; color: var(--white); }
+  .stat-num {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700;
+    display: block; line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-label { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-top: 0.4rem; display: block; }
+  @keyframes statGlow {
+    0%   { text-shadow: none; }
+    40%  { text-shadow: 0 0 18px rgba(255,255,255,0.9), 0 0 36px rgba(255,255,255,0.5); }
+    100% { text-shadow: none; }
+  }
+  .stat-num.glow { animation: statGlow 1.2s ease forwards; }
+
+  /* Feature cards */
+  .feature-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem; margin-top: 3rem;
+  }
+  .feature-card {
+    background: var(--white); border: 1px solid var(--gray-100);
+    border-radius: 6px; padding: 2rem 1.8rem;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .feature-card:hover { box-shadow: 0 8px 28px rgba(27,63,160,0.12); transform: translateY(-3px); }
+  .feature-icon {
+    width: 48px; height: 48px; border-radius: 4px;
+    background: var(--blue); display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.2rem; font-size: 1.4rem;
+  }
+  .feature-icon svg { width: 24px; height: 24px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .feature-card h3 { font-size: 1.1rem; margin-bottom: 0.6rem; color: var(--black); }
+  .feature-card p { font-size: 0.9rem; color: var(--gray-700); line-height: 1.6; }
+
+  /* Facebook feed embed */
+  .fb-section {
+    background: var(--gray-50); padding: 5rem clamp(1.5rem, 6vw, 6rem);
+  }
+  .fb-wrapper {
+    display: flex; gap: 3rem; align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .fb-embed-container {
+    flex: 0 0 500px; max-width: 100%;
+    border-radius: 6px; overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  }
+  .fb-embed-fallback {
+    background: var(--white); border: 1px solid var(--gray-100);
+    border-radius: 6px; padding: 2rem; text-align: center;
+    color: var(--gray-400); font-size: 0.85rem;
+  }
+  .fb-side { flex: 1; min-width: 240px; }
+  .fb-side h3 { font-size: 1.4rem; margin-bottom: 0.8rem; }
+  .fb-side p { color: var(--gray-700); font-size: 0.92rem; margin-bottom: 1.5rem; }
+
+  /* Interest form */
+  .interest-form-card {
+    background: var(--white); border: 1px solid var(--gray-100);
+    border-radius: 8px; padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    max-width: 520px;
+  }
+  .interest-form-card h3 {
+    font-size: 1.2rem; margin-bottom: 1.5rem;
+    padding-bottom: 1rem; border-bottom: 2px solid var(--blue); color: var(--blue);
+  }
+
+  /* PAGE HERO */
+  .page-hero {
+    background: var(--blue); padding: 7rem clamp(1.5rem, 6vw, 6rem);
+    position: relative; overflow: hidden;
+  }
+  .page-hero h1 { color: var(--white); position: relative; z-index: 1; }
+  .page-hero p { color: rgba(255,255,255,0.75); margin-top: 0.6rem; font-size: 1rem; position: relative; z-index: 1; }
+
+  /* TEAMS */
+  /* TEAMS LIST */
+  .teams-grid { margin-top: 1.5rem; }
+  .team-card {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 1.2rem; border-bottom: 1px solid var(--gray-100);
+    gap: 1rem; transition: background 0.15s;
+  }
+  .team-card:first-child { border-top: 1px solid var(--gray-100); }
+  .team-card:hover { background: var(--gray-50); }
+  .team-left { display: flex; align-items: center; gap: 1.2rem; }
+  .team-age { font-family: 'Oswald', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--blue); min-width: 90px; }
+  .team-coach { font-size: 0.88rem; color: var(--gray-700); }
+  .team-coach strong { color: var(--black); }
+  .team-actions a {
+    font-family: 'Oswald', sans-serif; font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.45rem 0.9rem; border-radius: 4px;
+    background: var(--gray-50); color: var(--blue); border: 1px solid var(--gray-100);
+    transition: all 0.15s; white-space: nowrap;
+  }
+  .team-actions a:hover { background: var(--blue); color: var(--white); border-color: var(--blue); }
+
+  /* TRYOUTS */
+  .tryout-dates { background: var(--gray-50); border-radius: 6px; padding: 1.5rem; margin-bottom: 2rem; }
+  .tryout-dates h3 { font-size: 1rem; margin-bottom: 1rem; color: var(--blue); }
+  .tryout-date-row {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding: 0.8rem 0; border-bottom: 1px solid var(--gray-100); font-size: 0.9rem;
+  }
+  .tryout-date-row:last-child { border-bottom: none; }
+  .tryout-date-tag {
+    background: var(--blue); color: var(--white);
+    font-family: 'Oswald', sans-serif; font-size: 0.75rem; font-weight: 600;
+    padding: 0.25rem 0.6rem; border-radius: 3px; white-space: nowrap; flex-shrink: 0;
+  }
+  .contact-form-card {
+    background: var(--white); border: 1px solid var(--gray-100);
+    border-radius: 8px; padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  }
+  .contact-form-card h3 {
+    font-size: 1.2rem; margin-bottom: 1.5rem;
+    padding-bottom: 1rem; border-bottom: 2px solid var(--blue); color: var(--blue);
+  }
+
+  /* FACILITY */
+  .facility-feature-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem; margin-top: 2rem;
+  }
+  .facility-feature {
+    background: var(--white); border: 1px solid var(--gray-100);
+    border-radius: 6px; overflow: hidden;
+  }
+  .facility-feature-img { height: 160px; }
+  .facility-feature-body { padding: 1.2rem; }
+  .facility-feature-body h3 { font-size: 1.05rem; margin-bottom: 0.4rem; }
+  .facility-feature-body p { font-size: 0.85rem; color: var(--gray-700); }
+  .facility-cta-banner {
+    background: var(--blue); color: var(--white);
+    border-radius: 8px; padding: 2.5rem; text-align: center; margin-top: 3rem;
+  }
+  .facility-cta-banner h3 { font-size: 1.4rem; margin-bottom: 0.6rem; color: var(--white); }
+  .facility-cta-banner p { color: rgba(255,255,255,0.8); margin-bottom: 1.5rem; }
+
+  /* LESSONS */
+  .instructor-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem; margin-top: 2rem;
+  }
+  .instructor-card {
+    background: var(--white); border: 1px solid var(--gray-100);
+    border-radius: 8px; overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .instructor-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
+  .instructor-img {
+    height: 200px; overflow: hidden; position: relative;
+  }
+  .instructor-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  .instructor-body { padding: 1.3rem; }
+  .instructor-body h3 { font-size: 1.1rem; margin-bottom: 0.2rem; }
+  .instructor-role {
+    font-size: 0.75rem; color: var(--blue); font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.7rem;
+  }
+  .instructor-body p { font-size: 0.84rem; color: var(--gray-700); line-height: 1.55; margin-bottom: 0.6rem; }
+  .instructor-awards { margin-top: 0.8rem; }
+  .instructor-awards h4 { font-size: 0.75rem; font-family: 'Oswald', sans-serif; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 0.4rem; }
+  .instructor-awards ul { list-style: none; }
+  .instructor-awards li { font-size: 0.78rem; color: var(--gray-700); padding: 0.18rem 0; }
+  .instructor-awards li::before { content: '· '; color: var(--blue); font-weight: 700; }
+
+  /* CLINICS */
+  .clinic-card {
+    background: var(--white); border: 1px solid var(--gray-100);
+    border-radius: 8px; overflow: hidden; transition: box-shadow 0.2s;
+  }
+  .clinic-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
+  .clinic-header {
+    background: var(--blue); padding: 1.2rem 1.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .clinic-header h3 { color: var(--white); font-size: 1.1rem; }
+  .clinic-badge {
+    background: var(--gold); color: var(--black);
+    font-family: 'Oswald', sans-serif; font-size: 0.7rem; font-weight: 700;
+    padding: 0.25rem 0.6rem; border-radius: 3px; letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .clinic-body { padding: 1.5rem; }
+  .clinic-body p { font-size: 0.88rem; color: var(--gray-700); margin-bottom: 1rem; }
+  .clinic-meta { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+  .clinic-meta-item { font-size: 0.8rem; color: var(--gray-700); display: flex; align-items: center; gap: 0.35rem; }
+  .clinic-meta-item svg { width: 14px; height: 14px; stroke: var(--blue); stroke-width: 2; fill: none; }
+
+  /* ABOUT */
+  .timeline { margin-top: 2rem; }
+  .timeline-item { display: flex; gap: 2rem; padding-bottom: 2.5rem; position: relative; }
+  .timeline-item:not(:last-child)::after {
+    content: ''; position: absolute; left: 29px; top: 48px;
+    bottom: 0; width: 2px; background: var(--gray-100);
+  }
+  .timeline-year {
+    width: 60px; height: 60px; border-radius: 50%; background: var(--blue); color: var(--white);
+    font-family: 'Oswald', sans-serif; font-size: 0.8rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; position: relative; z-index: 1; text-align: center; line-height: 1.2;
+  }
+  .timeline-content h3 { font-size: 1rem; margin-bottom: 0.4rem; }
+  .timeline-content p { font-size: 0.88rem; color: var(--gray-700); }
+
+  /* FOOTER */
+  .footer { background: var(--black); color: var(--white); padding: 3rem clamp(1.5rem, 6vw, 6rem) 1.5rem; }
+  .footer-grid {
+    display: grid; grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 2.5rem; margin-bottom: 2.5rem;
+  }
+  @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 500px) { .footer-grid { grid-template-columns: 1fr; } }
+  .footer-brand img { height: 50px; margin-bottom: 1rem; filter: brightness(0) invert(1); }
+  .footer-brand p { font-size: 0.82rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+  .footer-col h4 {
+    font-family: 'Oswald', sans-serif; font-size: 0.8rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.9rem;
+  }
+  .footer-col a { display: block; font-size: 0.85rem; color: rgba(255,255,255,0.7); padding: 0.25rem 0; transition: color 0.15s; }
+  .footer-col a:hover { color: var(--white); }
+  .footer-col p { font-size: 0.82rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+  .footer-social { display: flex; gap: 0.75rem; margin-top: 0.8rem; }
+  .footer-social a {
+    display: flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px; border-radius: 4px;
+    background: rgba(255,255,255,0.08); color: var(--white) !important;
+    font-size: 0.75rem; font-weight: 700; font-family: 'Oswald', sans-serif;
+    transition: background 0.15s;
+  }
+  .footer-social a:hover { background: var(--blue); }
+  .footer-mobile-contact { display: none; }
+  @media (max-width: 768px) {
+    .footer-contact-col { display: none !important; }
+    .footer-mobile-contact { display: block !important; }
+  }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.2rem;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;
+    font-size: 0.75rem; color: rgba(255,255,255,0.3);
+  }
+  .footer-bottom a { color: rgba(255,255,255,0.4); }
+  .footer-bottom a:hover { color: var(--white); }
+
+  @media (max-width: 960px) { .nav-links { display: none; } .nav-hamburger { display: flex; } }
+
+  /* SCROLLING GALLERY */
+  .gallery-section { background: var(--black); padding: 4rem 0; overflow: hidden; }
+  .gallery-section .section-header { padding: 0 clamp(1.5rem,6vw,6rem); margin-bottom: 2rem; }
+  .gallery-track-wrap {
+    overflow: hidden; width: 100%;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  }
+  .gallery-track {
+    display: flex; gap: 1rem;
+    width: max-content;
+    animation: galleryScroll 32s linear infinite;
+  }
+  .gallery-track:hover { animation-play-state: paused; }
+  .gallery-track img {
+    height: 280px; width: 380px;
+    object-fit: cover; border-radius: 6px;
+    flex-shrink: 0;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .gallery-track img:hover { transform: scale(1.02); box-shadow: 0 8px 24px rgba(0,0,0,0.5); }
+  @keyframes galleryScroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+
+  /* MOBILE FIXES */
+  @media (max-width: 960px) {
+    .nav-links { display: none !important; }
+    .nav-hamburger { display: flex !important; margin-right: 0.5rem; }
+  }
+  @media (max-width: 768px) {
+    /* Reduce section spacing on mobile */
+    .section { padding: 2.5rem 1.2rem !important; }
+    .section-alt { padding: 2.5rem 1.2rem !important; }
+    .fb-section { padding: 2.5rem 1.2rem !important; }
+    .gallery-section { padding: 2rem 0 !important; }
+    .page-hero { padding: 5rem 1.2rem !important; }
+
+    /* Footer: brand full width, pages+contact side by side */
+
+    /* Swift buttons smaller on mobile */
+    .swift-btn { font-size: 0.72rem !important; padding: 0.6rem 1rem !important; letter-spacing: 0.04em !important; }
+
+    .footer-grid { grid-template-columns: 1fr !important; text-align: center; }
+    .footer-two-col { display: grid !important; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .footer-contact-col { display: none; }
+    .footer-two-col::after { content: ''; }
+    .footer-col a { display: block; }
+    .footer-social { justify-content: center; }
+    .footer-brand img { margin: 0 auto 1rem; }
+
+    /* Stats: 2x2 grid centered */
+    .stats-bar { display: grid !important; grid-template-columns: 1fr 1fr; gap: 0; padding: 1.5rem 0.5rem; }
+    .stat-item { text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding: 0.6rem 0.25rem; }
+    .stat-num { font-size: 1.85rem !important; line-height: 1; display: block !important; width: 100%; text-align: center !important; margin-bottom: 0.35rem; }
+    .stat-label { font-size: 0.6rem !important; letter-spacing: 0.06em; white-space: normal; display: block !important; text-align: center !important; line-height: 1.3; margin-top: 0 !important; color: rgba(255,255,255,0.65) !important; }
+
+    /* Hero: shorter */
+    .hero { height: 55vmax !important; min-height: 320px !important; }
+    /* Page hero: hide subtext, bigger h1, center images on mobile */
+    .page-hero p { display: none !important; }
+    .page-hero h1 { font-size: 2.4rem !important; }
+    .page-hero img { object-position: center center !important; }
+
+    /* Cooperstown split: image below text */
+    .coop-split { grid-template-columns: 1fr !important; }
+    .coop-split .split-img { order: 2; height: 220px !important; }
+
+    /* Gallery: smaller images */
+    .gallery-track img { height: 160px !important; width: 220px !important; }
+
+    /* Tryout images stack */
+    .tryout-img-grid { grid-template-columns: 1fr !important; }
+    .tryout-img-grid img { height: 200px !important; }
+
+    /* Contact grids stack */
+    .home-contact-grid { grid-template-columns: 1fr !important; gap: 1.2rem !important; }
+    .about-contact-grid { grid-template-columns: 1fr !important; gap: 1.2rem !important; }
+    .split { margin-bottom: 2rem !important; }
+    .about-action3 { display: none !important; }
+    .split.fade-in[style*="margin-bottom:5rem"] { margin-bottom: 1rem !important; }
+
+    /* Teams list: centered on mobile */
+    .team-card { flex-direction: column; align-items: center; text-align: center; gap: 0.5rem; padding: 1rem; }
+    .team-left { flex-direction: column; align-items: center; gap: 0.2rem; }
+    .team-actions a { display: block; }
+
+    /* RECRUITING PAGE MOBILE FIXES */
+    .cam-bio-grid { grid-template-columns: 1fr !important; gap: 1rem !important; }
+    .cam-bio-more { display: none; }
+    .cam-bio-more.open { display: block; }
+    .cam-bio-toggle { display: inline-block !important; }
+
+    .blueprint-box { padding: 1.5rem 1.2rem !important; }
+    .blueprint-list { grid-template-columns: 1fr !important; gap: 1.2rem !important; }
+    .blueprint-item p { font-size: 0.82rem !important; line-height: 1.5 !important; }
+    .blueprint-item .bp-num { font-size: 1.2rem !important; }
+
+    .recruit-questions-banner { padding: 1.2rem 1rem !important; }
+    .recruit-questions-banner p { font-size: 0.82rem !important; }
+
+    .roadmap-price { text-align: left !important; }
+
+    /* Mobile dropdown in menu */
+    .mobile-submenu {
+      display: none; background: rgba(255,255,255,0.05);
+      border-top: 1px solid rgba(255,255,255,0.06);
     }
-    p {
-      font-size: 1.5rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
+    .mobile-submenu.open { display: block; }
+    .mobile-submenu a {
+      padding: 0.6rem 2rem; font-size: 0.82rem; color: rgba(255,255,255,0.65);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
     }
-    #loaded-time {
-      margin-top: 1rem;
-      font-size: 1rem;
-      font-weight: 400;
-      color: #9a9a9a;
-    }
-  </style>
+    .mobile-teams-toggle { display: flex !important; justify-content: space-between; align-items: center; }
+    .mobile-teams-toggle span { font-family: "Oswald", sans-serif; font-size: 1rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(255,255,255,0.8); }
+    .mobile-chevron { transition: transform 0.25s ease; display: inline-block; color: rgba(255,255,255,0.5); }
+    .mobile-chevron.open { transform: rotate(180deg); }
+  }
+
+
+  /* ANIMATIONS */
+  .fade-in {
+    opacity: 0; transform: translateY(22px);
+    transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  .fade-in-left {
+    opacity: 0; transform: translateX(-28px);
+    transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+  }
+  .fade-in-left.visible { opacity: 1; transform: translateX(0); }
+  .fade-in-right {
+    opacity: 0; transform: translateX(28px);
+    transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+  }
+  .fade-in-right.visible { opacity: 1; transform: translateX(0); }
+
+  /* Hero content slides up on load */
+  .hero-content { animation: heroSlideUp 0.7s ease both; }
+  @keyframes heroSlideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Stats bar items pop in */
+  .stat-item { animation: statPop 0.4s ease both; }
+  .stat-item:nth-child(1) { animation-delay: 0.05s; }
+  .stat-item:nth-child(2) { animation-delay: 0.12s; }
+  .stat-item:nth-child(3) { animation-delay: 0.19s; }
+  .stat-item:nth-child(4) { animation-delay: 0.26s; }
+  @keyframes statPop {
+    from { opacity: 0; transform: scale(0.85); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  /* Page hero slides down */
+  .page-hero h1 { animation: heroSlideUp 0.5s ease both; }
+  .page-hero p  { animation: heroSlideUp 0.5s 0.1s ease both; }
+
+  /* Team list rows */
+  .team-card { animation: none; }
+  .team-card.visible { animation: fadeRow 0.35s ease both; }
+  @keyframes fadeRow {
+    from { opacity: 0; transform: translateX(-12px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  /* Smooth page transitions */
+  .page.active { animation: pageFadeIn 0.3s ease both; }
+  @keyframes pageFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Button hover lift + press */
+  .btn { transition: all 0.18s ease; }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+  .btn:active { transform: translateY(0); box-shadow: 0 1px 4px rgba(0,0,0,0.12); transition-duration: 0.06s; }
+
+  /* Nav links underline slide */
+  .nav-links a::after, .nav-links button::after {
+    content: ''; display: block; height: 2px;
+    background: var(--blue-light); transform: scaleX(0);
+    transition: transform 0.2s ease; transform-origin: left;
+  }
+  .nav-links a:hover::after, .nav-links button:hover::after { transform: scaleX(1); }
+  .nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.5); }
+
+  /* Feature card lift already handled by .btn, add for cards too */
+  .feature-card { transition: box-shadow 0.2s, transform 0.2s; }
+
+
+  .cookie-banner {
+    animation: cookieUp 0.45s var(--ease-out) both;
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 2000;
+    background: var(--black); border-top: 2px solid var(--blue);
+    padding: 1rem clamp(1.5rem, 4vw, 3rem);
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .cookie-banner p { font-size: 0.82rem; color: rgba(255,255,255,0.75); max-width: 680px; }
+  .cookie-banner a { color: var(--blue); }
+  .cookie-accept {
+    font-family: "Oswald", sans-serif; font-size: 0.8rem; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    background: var(--blue); color: var(--white);
+    border: none; border-radius: 4px; padding: 0.5rem 1.2rem; cursor: pointer;
+  }
+  .cookie-accept:hover { background: var(--blue-dark); }
+  @keyframes cookieUp {
+    from { transform: translateY(100%); }
+    to   { transform: translateY(0); }
+  }
+
+
+  /* EXTRA ANIMATIONS */
+  /* Image hover zoom */
+  .img-zoom { overflow: hidden; border-radius: 6px; }
+  .img-zoom img { transition: transform 0.45s ease; }
+  .img-zoom:hover img { transform: scale(1.04); }
+
+  /* Section header - no underline */
+  .section-header h2 { position: relative; display: inline-block; }
+
+  /* Timeline dot - no glow ring */
+  .timeline-year { transition: none; }
+
+  /* Stagger fade utility */
+  .stagger-1 { transition-delay: 0.05s !important; }
+  .stagger-2 { transition-delay: 0.12s !important; }
+  .stagger-3 { transition-delay: 0.2s !important; }
+  .stagger-4 { transition-delay: 0.28s !important; }
+
+  /* Form input focus glow */
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(27,63,160,0.12);
+  }
+
+  /* Team card hover: accent bar, no layout jump */
+  .team-card { transition: background 0.18s, box-shadow 0.18s, transform 0.18s; }
+  .team-card:hover { box-shadow: inset 3px 0 0 var(--blue); transform: translateX(2px); }
+
+  /* Contact card slide-in shadow */
+  .contact-form-card { transition: box-shadow 0.3s ease; }
+  .contact-form-card:hover { box-shadow: 0 8px 32px rgba(27,63,160,0.14); }
+
+  /* Stats bar number pulse on glow */
+  .stat-num { display: inline-block; transition: transform 0.15s ease; }
+
+  /* Gallery image brightness on hover */
+  .gallery-track img { transition: transform 0.3s, box-shadow 0.3s, filter 0.3s; }
+  .gallery-track img:hover { filter: brightness(1.1); }
+
+  /* Btn shine sweep */
+  .btn { position: relative; overflow: hidden; }
+  .btn::after {
+    content: ''; position: absolute;
+    top: 0; left: -100%; width: 60%; height: 100%;
+    background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.18) 50%, transparent 100%);
+    transition: left 0.4s ease;
+  }
+  .btn:hover::after { left: 140%; }
+
+  /* Footer links hover indent */
+  .footer-col a { transition: color 0.15s, padding-left 0.15s; }
+  .footer-col a:hover { color: var(--white); padding-left: 4px; }
+
+
+  /* Facebook embed mobile fix */
+  .fb-embed-container { overflow: hidden; }
+  @media (max-width: 768px) {
+    .fb-wrapper { flex-direction: column; }
+    .fb-embed-container { flex: none !important; width: 100% !important; }
+    .fb-embed-container iframe { max-width: 100% !important; }
+  }
+
+  /* Back to top */
+  .back-to-top {
+    position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 1500;
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--blue); color: var(--white); border: none;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+    opacity: 0; visibility: hidden; transform: translateY(10px);
+    transition: opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out), visibility 0.3s, background 0.15s;
+  }
+  .back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+  .back-to-top:hover { background: var(--blue-dark); }
+  .back-to-top svg { width: 20px; height: 20px; stroke: #fff; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+
+  /* RECRUITING PAGE */
+  .blueprint-box {
+    background: var(--blue); color: var(--white);
+    border-radius: 8px; padding: 2rem clamp(1.5rem, 4vw, 2.5rem);
+    margin-bottom: 3rem;
+  }
+  .blueprint-box h3 { color: var(--white); font-size: 1.3rem; margin-bottom: 1.2rem; }
+  .blueprint-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+  .blueprint-item { display: flex; gap: 0.9rem; align-items: flex-start; }
+  .blueprint-item .bp-num {
+    font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 1.4rem;
+    color: var(--gold); flex-shrink: 0; line-height: 1.2;
+  }
+  .blueprint-item p { font-size: 0.9rem; color: rgba(255,255,255,0.85); line-height: 1.55; margin: 0; }
+  .blueprint-item strong { color: var(--white); }
+
+  .roadmap-row {
+    display: flex; gap: 0; margin-bottom: 3rem;
+    border-top: 1px solid var(--gray-100);
+  }
+  .roadmap-card {
+    flex: 1; padding: 1.8rem 1.4rem; border-right: 1px solid var(--gray-100);
+    display: flex; flex-direction: column;
+  }
+  .roadmap-card:last-child { border-right: none; }
+  .roadmap-year { font-family: 'Oswald', sans-serif; font-size: 1.15rem; font-weight: 700; color: var(--black); margin-bottom: 0.2rem; }
+  .roadmap-focus { font-size: 0.78rem; color: var(--blue); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.9rem; }
+  .roadmap-details { font-size: 0.85rem; color: var(--gray-700); line-height: 1.6; margin-bottom: 1rem; }
+  .roadmap-comm { font-size: 0.78rem; color: var(--gray-400); margin-bottom: 1rem; font-style: italic; }
+  .roadmap-price { font-family: 'Oswald', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--black); border-top: 1px solid var(--gray-100); padding-top: 0.9rem; margin-top: auto; text-align: center; }
+  .roadmap-price span { display: block; font-size: 0.72rem; font-weight: 400; color: var(--gray-400); margin-top: 0.15rem; }
+
+  @media (max-width: 900px) {
+    .roadmap-row { flex-direction: column; border-top: none; }
+    .roadmap-card { border-right: none; border-top: 1px solid var(--gray-100); }
+    .roadmap-card:first-child { border-top: none; }
+  }
+
+  .cam-bio-toggle {
+    display: none;
+    background: none; border: none; padding: 0;
+    color: var(--blue); font-weight: 600; font-size: 0.85rem;
+    cursor: pointer; margin-top: 0.2rem;
+  }
+  .cam-bio-toggle:hover { text-decoration: underline; }
+
+  .recruit-questions-banner {
+    background: var(--gray-50); border: 1px solid var(--gray-100);
+    border-radius: 8px; padding: 1.6rem 2rem; margin-bottom: 3rem;
+    text-align: center;
+  }
+  .recruit-questions-banner h3 { font-size: 1.1rem; margin-bottom: 0.4rem; }
+  .recruit-questions-banner p { font-size: 0.9rem; color: var(--gray-700); overflow-wrap: break-word; word-break: break-word; }
+  .recruit-questions-banner a { color: var(--blue); font-weight: 600; }
+
+  .price-summary {
+    background: var(--gray-50); border: 1px solid var(--gray-100);
+    border-radius: 6px; padding: 1.2rem 1.4rem; margin-bottom: 1.2rem;
+  }
+  .price-summary-row {
+    display: flex; justify-content: space-between; font-size: 0.85rem;
+    color: var(--gray-700); padding: 0.3rem 0;
+  }
+  .price-summary-row.total {
+    border-top: 1px solid var(--gray-100); margin-top: 0.4rem; padding-top: 0.7rem;
+    font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--blue);
+  }
+  .toggle-row {
+    display: flex; align-items: center; gap: 0.7rem; margin-bottom: 1.1rem;
+    font-size: 0.9rem; color: var(--gray-700);
+  }
+  .toggle-row input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--blue); cursor: pointer; }
+
+
+  .text-center { text-align: center; }
+</style>
 </head>
 <body>
-  <div>
-    <p>MVP Baseball - temporary website holder</p>
-    <p id="loaded-time"></p>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo" onclick="showPage('home')" style="cursor:pointer;">
+    <img src="assets/mvplogo.avif"
+         alt="MV Prospects Baseball"
+         onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+    <span style="display:none;font-family:'Oswald',sans-serif;font-size:1.2rem;font-weight:700;color:var(--blue);">MV PROSPECTS</span>
   </div>
-  <script>
-    document.getElementById("loaded-time").textContent =
-      "Page loaded: " + new Date().toUTCString();
-  </script>
+  <ul class="nav-links">
+    <li><a href="#" onclick="showPage('home'); return false;">Home</a></li>
+    <li>
+      <button onclick="showPage('teams')">Teams ▾</button>
+      <div class="nav-dropdown" id="teamsDropdown"></div>
+    </li>
+    <li><a href="#" onclick="showPage('tryouts'); return false;">Tryouts</a></li>
+    <li><a href="https://book.runswiftapp.com/facilities/mvp-training-facility" target="_blank">Facility</a></li>
+    <li><a href="#" onclick="showPage('lessons'); return false;">Lessons</a></li>
+    <li><a href="#" onclick="showPage('clinics'); return false;">Clinics</a></li>
+    <li><a href="#" onclick="showPage('recruiting'); return false;">Recruiting</a></li>
+    <li><a href="#" onclick="showPage('about'); return false;">About Us</a></li>
+  </ul>
+  <button class="nav-hamburger" onclick="toggleMobile()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#" onclick="showPage('home'); toggleMobile(); return false;">Home</a>
+  <button class="mobile-teams-toggle" onclick="toggleMobileTeams()" style="display:flex;padding:0.85rem 1.5rem;width:100%;background:none;border:none;border-bottom:1px solid rgba(255,255,255,0.08);">
+    <span>Teams</span>
+    <span class="mobile-chevron" id="mobileChevron">&#9660;</span>
+  </button>
+  <div class="mobile-submenu" id="mobileTeamsSubmenu">
+    <a href="#" onclick="showPage('teams'); toggleMobile(); return false;" style="font-weight:600;color:rgba(255,255,255,0.9);">All Teams</a>
+  </div>
+  <a href="#" onclick="showPage('tryouts'); toggleMobile(); return false;">Tryouts</a>
+  <a href="https://book.runswiftapp.com/facilities/mvp-training-facility" target="_blank" onclick="toggleMobile()">Facility</a>
+  <a href="#" onclick="showPage('lessons'); toggleMobile(); return false;">Lessons</a>
+  <a href="#" onclick="showPage('clinics'); toggleMobile(); return false;">Clinics</a>
+  <a href="#" onclick="showPage('recruiting'); toggleMobile(); return false;">Recruiting</a>
+  <a href="#" onclick="showPage('about'); toggleMobile(); return false;">About Us</a>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     HOME
+══════════════════════════════════════════════════ -->
+<div id="page-home" class="page active">
+
+  <section class="hero">
+    <img src="assets/team1.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 70%;">
+    <div class="hero-diamond"></div>
+    <svg class="hero-stitches" viewBox="0 0 800 560" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;opacity:0.06;">
+      <path d="M650 0 Q750 150 800 280" stroke="white" stroke-width="2" fill="none" stroke-dasharray="8 6"/>
+      <path d="M680 0 Q780 150 800 300" stroke="white" stroke-width="1.5" fill="none" stroke-dasharray="8 6"/>
+      <circle cx="700" cy="80" r="60" stroke="white" stroke-width="1" fill="none" stroke-dasharray="4 4"/>
+    </svg>
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <h1>Developing the Next Generation of Champions, On and Off the Field</h1>
+      <div class="hero-actions">
+        <a href="#" class="btn btn-primary" onclick="showPage('about'); setTimeout(function(){var el=document.getElementById('aboutContactForm'); if(el) el.scrollIntoView({behavior:'smooth'});},300); return false;">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats-bar">
+    <div class="stat-item"><span class="stat-num" data-target="16">0</span><span class="stat-label">Active Teams</span></div>
+    <div class="stat-item"><span class="stat-num" data-target="300" data-suffix="+">0</span><span class="stat-label">Players Developed</span></div>
+    <div class="stat-item"><span class="stat-num" data-target="13">0</span><span class="stat-label">Cooperstown Trips</span></div>
+    <div class="stat-item"><span class="stat-num" data-target="2014" data-start="1990">0</span><span class="stat-label">Year Founded</span></div>
+  </div>
+
+  <!-- About split -->
+  <section class="section section-alt">
+    <div class="split coop-split fade-in">
+      <div>
+        <div class="section-header"><h2>From Nashua to Cooperstown</h2></div>
+        <p style="color:var(--gray-700);margin-bottom:1.2rem;font-size:0.95rem;">The MVProspects started in 2014 as the Greater Nashua Prospects, a local AAU club with one goal: give kids in southern New Hampshire a real shot at competitive travel ball without the sky-high costs.</p>
+        <p style="color:var(--gray-700);margin-bottom:1.5rem;font-size:0.95rem;">Ten years later there are 16 teams, 13 Cooperstown trips, and our own training facility. The name has changed. The mission hasn't.</p>
+        <a href="#" class="btn btn-outline-blue" onclick="showPage('about'); return false;">Read Our Full Story</a>
+      </div>
+      <div class="split-img img-zoom" style="overflow:hidden;border-radius:6px;">
+        <img src="assets/cooperstown1.jpg" style="width:100%;height:100%;object-fit:cover;" loading="lazy" alt="MV Prospects at Cooperstown">
+      </div>
+    </div>
+  </section>
+
+
+  <!-- What Sets MVP Apart -->
+  <section class="section" style="background:var(--blue);">
+    <div class="section-header white"><h2>What Sets MVP Apart</h2></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2.5rem;">
+      <div class="fade-in">
+        <h3 style="font-size:1.1rem;margin-bottom:0.5rem;color:var(--white);">Year-Round Development</h3>
+        <p style="color:rgba(255,255,255,0.82);font-size:0.9rem;line-height:1.65;">From fall ball to summer tournaments, our coaches focus on the long game. Building fundamentals and character that last past the diamond.</p>
+      </div>
+      <div class="fade-in" style="animation-delay:0.1s;">
+        <h3 style="font-size:1.1rem;margin-bottom:0.5rem;color:var(--white);">Our Own Facility</h3>
+        <p style="color:rgba(255,255,255,0.82);font-size:0.9rem;line-height:1.65;">The MVP Training Facility opened in 2025. Turf cages, pitching mounds, and year-round access for all our players without the cost of outside facilities.</p>
+      </div>
+      <div class="fade-in" style="animation-delay:0.2s;">
+        <h3 style="font-size:1.1rem;margin-bottom:0.5rem;color:var(--white);">Affordable First</h3>
+        <p style="color:rgba(255,255,255,0.82);font-size:0.9rem;line-height:1.65;">Since 2014 the goal has been the same: keep the game accessible. Elite competition shouldn't come with an elite price tag. That hasn't changed.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Facebook feed -->
+  <section class="fb-section">
+    <div class="section-header"><h2>Follow Along on Facebook</h2></div>
+    <div class="fb-wrapper">
+      <div class="fb-embed-container">
+        <div id="fb-root"></div>
+        <div id="fbPageContainer"></div>
+        <div class="fb-embed-fallback" id="fbFallback" style="display:none;">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" style="margin:0 auto 1rem;"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          <p style="margin-bottom:1rem;">Facebook feed not loading? Check us out directly.</p>
+          <a href="https://www.facebook.com/MerrimackValleyProspects/" target="_blank" class="btn btn-primary">Open Facebook Page</a>
+        </div>
+      </div>
+      <div class="fb-side">
+        <h3>Game updates, photos, and news all season long.</h3>
+        <p>Facebook is where we post scores, schedule changes, photo albums from tournaments, and everything else happening with MVP Baseball. Follow us to stay in the loop.</p>
+        <a href="https://www.facebook.com/MerrimackValleyProspects/" target="_blank" class="btn btn-primary" style="display:inline-block;">Follow on Facebook</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scrolling photo gallery -->
+  <section class="gallery-section">
+    <div class="section-header white"><h2>Life at MVP</h2></div>
+    <div class="gallery-track-wrap">
+      <div class="gallery-track">
+        <!-- first set -->
+        <img src="assets/cooperstown2.jpg" alt="Cooperstown" loading="lazy">
+        <img src="assets/action1.jpg"      alt="Action" loading="lazy">
+        <img src="assets/team2.jpg"        alt="Team" loading="lazy">
+        <img src="assets/action4.jpg"      alt="Action" loading="lazy">
+        <img src="assets/action5.jpg"      alt="Action" loading="lazy">
+        <img src="assets/cooperstown1.jpg" alt="Cooperstown" loading="lazy">
+        <img src="assets/team1.jpg"        alt="Team" loading="lazy">
+        <!-- duplicate for seamless loop -->
+        <img src="assets/cooperstown2.jpg" alt="Cooperstown" loading="lazy">
+        <img src="assets/action1.jpg"      alt="Action" loading="lazy">
+        <img src="assets/team2.jpg"        alt="Team" loading="lazy">
+        <img src="assets/action4.jpg"      alt="Action" loading="lazy">
+        <img src="assets/action5.jpg"      alt="Action" loading="lazy">
+        <img src="assets/cooperstown1.jpg" alt="Cooperstown" loading="lazy">
+        <img src="assets/team1.jpg"        alt="Team" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact form -->
+  <section class="section">
+    <div class="home-contact-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;flex-wrap:wrap;">
+      <div>
+        <div class="section-header"><h2>Get in Touch</h2></div>
+        <p style="color:var(--gray-700);font-size:0.95rem;margin-bottom:1.2rem;">Questions about the program, tryouts, lessons, or facility? Send us a message and we'll get back to you.</p>
+        <p style="color:var(--gray-700);font-size:0.95rem;margin-bottom:1.5rem;">You can also email us directly at <a href="mailto:info@mvpbaseballnh.com" style="color:var(--blue);">info@mvpbaseballnh.com</a>.</p>
+      </div>
+      <div class="contact-form-card fade-in">
+        <h3>Send a Message</h3>
+        <div id="homeContactError" class="form-error"></div>
+        <div id="homeContactSuccess" class="form-success">Message sent! We'll be in touch soon.</div>
+        <div id="homeContactForm">
+          <p style="font-size:0.75rem;color:var(--gray-400);margin-bottom:1rem;">Please complete this form as a parent or guardian on behalf of your player.</p>
+          <div class="form-group"><label>Name *</label><input type="text" placeholder="Your name" id="hName"></div>
+          <div class="form-group"><label>Email *</label><input type="email" placeholder="email@example.com" id="hEmail"></div>
+          <div class="form-group">
+            <label>Subject</label>
+            <select id="hSubject">
+              <option value="">Select a topic</option>
+              <option>Tryouts</option>
+              <option>Private Lessons</option>
+              <option>Clinics</option>
+              <option>Facility Rental</option>
+              <option>General Question</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Message *</label><textarea placeholder="Your message..." id="hMessage"></textarea></div>
+          <div style="display:none;" aria-hidden="true"><input type="text" name="hp" id="hp_home" tabindex="-1" autocomplete="off"></div>
+          <button class="btn btn-primary" style="width:100%;" onclick="submitHomeContact()">Send Message</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     TEAMS
+══════════════════════════════════════════════════ -->
+<div id="page-teams" class="page">
+  <div class="page-hero" style="position:relative;overflow:hidden;">
+    <img src="assets/team2.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%;opacity:0.25;z-index:0;">
+    <h1 style="position:relative;z-index:1;">Our Teams</h1>
+    <p style="position:relative;z-index:1;">16 teams, 9U through 17U, competing across New England. Roster and schedule for each team is on Perfect Game.</p>
+  </div>
+  <section class="section">
+    <div class="teams-grid" id="teamsGrid" style="margin-top:1rem;"></div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     TRYOUTS
+══════════════════════════════════════════════════ -->
+<div id="page-tryouts" class="page">
+  <div class="page-hero" style="position:relative;overflow:hidden;">
+    <img src="assets/yellowteam2.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%;opacity:0.25;z-index:0;">
+    <h1 style="position:relative;z-index:1;">Tryouts</h1>
+    <p style="position:relative;z-index:1;">MV Prospects travel baseball program. Tryouts are typically held in July for the upcoming spring season.</p>
+  </div>
+  <section class="section">
+    <div style="max-width:900px;">
+      <div class="section-header"><h2>MV Prospects Travel Baseball Program &ndash; Tryouts</h2></div>
+      <p style="color:var(--gray-700);font-size:0.95rem;margin-bottom:1.5rem;">The MV Prospects are built for dedicated athletes who want to compete at the highest level while developing their skills in a positive, team-focused environment. Tryouts are typically held in July for the upcoming spring season, giving players plenty of time to prepare and train before games begin.</p>
+
+      <p style="font-size:0.95rem;font-weight:700;color:var(--blue);margin-bottom:2rem;">We have one more scheduled tryout. Sign up now to reserve your spot!</p>
+
+      <div class="section-header"><h2>Upcoming Tryouts</h2></div>
+      <p style="color:var(--gray-700);font-size:0.95rem;margin-bottom:1.5rem;">We will be holding one more tryout! View information on the dates and location below. More information can be seen on the registration link. To register, fill out the form <a href="https://mvprospectsnh.byga.net/tryouts/cmecnlsl7e/signup?fbclid=IwY2xjawSnahNleHRuA2FlbQIxMABicmlkETFjSm1qaThHMHhMNnJ6M0lBc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHieWtq16kYtNA8vDpdG06pTktoaCE1EXNVJT7gL1vyJlQsYxb20RXK_5Bdca_aem_v1mKcAeL0isI-eC5XRXzjw" target="_blank" style="color:var(--blue);font-weight:600;">here</a>.</p>
+
+      <div class="tryout-dates">
+        <h3>9U - 12U</h3>
+        <div class="tryout-date-row">
+          <span class="tryout-date-tag">July 27</span>
+          <div>6:00 PM &ndash; 7:30 PM<br><span style="font-size:0.82rem;color:var(--gray-400);">MVP Training Facility</span></div>
+        </div>
+      </div>
+
+      <div class="tryout-dates">
+        <h3>13U - 15U</h3>
+        <div class="tryout-date-row">
+          <span class="tryout-date-tag">July 28</span>
+          <div>6:00 PM &ndash; 7:30 PM<br><span style="font-size:0.82rem;color:var(--gray-400);">MVP Training Facility</span></div>
+        </div>
+      </div>
+
+      <a href="https://mvprospectsnh.byga.net/tryouts/cmecnlsl7e/signup" target="_blank" class="btn btn-primary" style="margin-bottom:2.5rem;display:inline-block;">Register for a Tryout</a>
+      <div style="clear:both;"></div>
+
+
+      <h2 style="font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(1.6rem,3.5vw,2.6rem);color:var(--black);margin-bottom:1rem;margin-top:0.5rem;">Questions?</h2>
+      <p style="color:var(--gray-700);font-size:0.9rem;margin-bottom:1.5rem;">Send us a message and we will get back to you as soon as possible.</p>
+      <div class="contact-form-card fade-in">
+        <h3>Contact Us</h3>
+        <div id="tryoutContactError" class="form-error"></div>
+        <div id="tryoutContactSuccess" class="form-success">Message sent! We'll be in touch soon.</div>
+        <div id="tryoutContactForm">
+          <p style="font-size:0.75rem;color:var(--gray-400);margin-bottom:1rem;">Please complete this form as a parent or guardian on behalf of your player.</p>
+          <div class="form-group"><label>Name *</label><input type="text" placeholder="Your name" id="tName"></div>
+          <div class="form-group"><label>Email *</label><input type="email" placeholder="email@example.com" id="tEmail"></div>
+          <div class="form-group"><label>Message *</label><textarea placeholder="Your question..." id="tMessage"></textarea></div>
+          <div style="display:none;" aria-hidden="true"><input type="text" name="hp" id="hp_tryout" tabindex="-1" autocomplete="off"></div>
+          <button class="btn btn-primary" onclick="submitTryoutContact()">Send</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     FACILITY - nav links to RunSwift directly
+     This page kept for info purposes only
+══════════════════════════════════════════════════ -->
+<!-- Facility nav link opens RunSwift directly, no local page needed -->
+
+<!-- ══════════════════════════════════════════════════
+     LESSONS
+══════════════════════════════════════════════════ -->
+<div id="page-lessons" class="page">
+  <div class="page-hero" style="position:relative;overflow:hidden;">
+    <img src="assets/facility1.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;opacity:0.25;z-index:0;">
+    <h1 style="position:relative;z-index:1;">Private Lessons</h1>
+    <p style="position:relative;z-index:1;">One-on-one instruction at the MVP Training Facility in Nashua.</p>
+  </div>
+  <section class="section">
+    <div>
+      <div class="section-header"><h2>Private Lessons for MV Prospects Players</h2></div>
+      <p style="color:var(--gray-700);font-size:0.95rem;margin-bottom:1.5rem;">As an MV Prospects player, you have access to private lessons at the MVP Training Facility, offering one-on-one instruction with experienced coaches whose backgrounds range from college baseball to professional coaching staff.</p>
+
+      <p style="color:var(--gray-700);font-size:0.95rem;margin-bottom:0.5rem;">Our roster covers:</p>
+      <ul style="list-style:none;margin-bottom:2rem;">
+        <li style="padding:0.4rem 0;font-size:0.95rem;color:var(--gray-700);display:flex;align-items:center;gap:0.6rem;border-bottom:1px solid var(--gray-100);"><span style="color:var(--blue);font-weight:700;">→</span> Hitting</li>
+        <li style="padding:0.4rem 0;font-size:0.95rem;color:var(--gray-700);display:flex;align-items:center;gap:0.6rem;border-bottom:1px solid var(--gray-100);"><span style="color:var(--blue);font-weight:700;">→</span> Pitching</li>
+        <li style="padding:0.4rem 0;font-size:0.95rem;color:var(--gray-700);display:flex;align-items:center;gap:0.6rem;border-bottom:1px solid var(--gray-100);"><span style="color:var(--blue);font-weight:700;">→</span> Catching</li>
+        <li style="padding:0.4rem 0;font-size:0.95rem;color:var(--gray-700);display:flex;align-items:center;gap:0.6rem;"><span style="color:var(--blue);font-weight:700;">→</span> Infield</li>
+      </ul>
+
+      <h3 style="font-size:1.1rem;margin-bottom:0.6rem;">Expanded availability for the 2027 season</h3>
+      <p style="color:var(--gray-700);font-size:0.95rem;margin-bottom:2rem;">Lesson slots filled up fast last year. More instructors with evening and weekend availability have been added for 2027, making it easier to find a time that works around school, rec ball, and team practices.</p>
+
+      <h3 style="font-size:1.1rem;margin-bottom:0.6rem;">How to book</h3>
+      <p style="color:var(--gray-700);font-size:0.95rem;margin-bottom:1rem;">All private lesson bookings happen through Swift, the facility's booking platform. Browse instructor bios, see current availability, and book directly with the instructor of your choice. Each instructor sets their own rates.</p>
+      <a href="https://book.runswiftapp.com/facilities/mvp-training-facility/lessons" target="_blank" class="btn btn-primary swift-btn" style="margin-bottom:2rem;display:inline-block;">Browse Instructors and Book on Swift</a>
+
+      <h3 style="font-size:1.1rem;margin-bottom:0.6rem;">Need help picking an instructor?</h3>
+      <p style="color:var(--gray-700);font-size:0.95rem;">Not sure which instructor is the best fit or who has open availability? Email us at <a href="mailto:training@MVPTrainingFacility.com" style="color:var(--blue);">training@MVPTrainingFacility.com</a> and we'll help find the right match.</p>
+    </div>
+  </section>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     CLINICS
+══════════════════════════════════════════════════ -->
+<div id="page-clinics" class="page">
+  <div class="page-hero" style="position:relative;overflow:hidden;">
+    <img src="assets/facility2.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 55%;opacity:0.25;z-index:0;">
+    <h1 style="position:relative;z-index:1;">Clinics</h1>
+    <p style="position:relative;z-index:1;">Skill development clinics and drop-in clubs at the MVP Training Facility.</p>
+  </div>
+  <section class="section">
+    <div>
+      <div class="section-header"><h2>Clinics &amp; Drop-In Clubs for MV Prospects Players</h2></div>
+      <p style="color:var(--gray-700);font-size:0.95rem;margin-bottom:2rem;">As an MV Prospects player, you have access to all clinics and drop-in clubs at the MVP Training Facility, with discounted pricing through your included Bronze membership.</p>
+
+      <h3 style="font-size:1.15rem;margin-bottom:0.8rem;">Drop-In Clubs</h3>
+      <p style="color:var(--gray-700);font-size:0.95rem;margin-bottom:1rem;">Weekly group training led by our experienced instructors. Pay as you go, register session by session. No multi-week commitments to work around. Show up when it fits your schedule.</p>
+      <ul style="list-style:none;margin-bottom:0.8rem;">
+        <li style="padding:0.5rem 0;font-size:0.95rem;color:var(--gray-700);display:flex;align-items:flex-start;gap:0.6rem;border-bottom:1px solid var(--gray-100);"><span style="color:var(--blue);font-weight:700;flex-shrink:0;">→</span><div><strong>Hitting Club:</strong> Swing mechanics, approach, and game-speed reps</div></li>
+        <li style="padding:0.5rem 0;font-size:0.95rem;color:var(--gray-700);display:flex;align-items:flex-start;gap:0.6rem;border-bottom:1px solid var(--gray-100);"><span style="color:var(--blue);font-weight:700;flex-shrink:0;">→</span><div><strong>Pitching Club:</strong> Mechanics, command, and pitch design</div></li>
+        <li style="padding:0.5rem 0;font-size:0.95rem;color:var(--gray-700);display:flex;align-items:flex-start;gap:0.6rem;border-bottom:1px solid var(--gray-100);"><span style="color:var(--blue);font-weight:700;flex-shrink:0;">→</span><div><strong>Catching Club:</strong> Receiving, blocking, framing, footwork, and game management</div></li>
+        <li style="padding:0.5rem 0;font-size:0.95rem;color:var(--gray-700);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--blue);font-weight:700;flex-shrink:0;">→</span><div><strong>Strength &amp; Conditioning Club:</strong> Baseball-specific strength, mobility, and athletic development</div></li>
+      </ul>
+      <p style="color:var(--blue);font-size:0.85rem;font-weight:700;margin-bottom:2.5rem;">MV Prospects players get a Bronze member discount on every session.</p>
+
+      <h3 style="font-size:1.15rem;margin-bottom:0.8rem;">Specialty Clinics</h3>
+      <p style="color:var(--gray-700);font-size:0.95rem;margin-bottom:2.5rem;">Throughout the year we run specialty clinics on specific skills, age groups, or focused training topics. Schedules vary; check Swift for what's currently on the calendar.</p>
+
+      <h3 style="font-size:1.15rem;margin-bottom:0.8rem;">How to register</h3>
+      <p style="color:var(--gray-700);font-size:0.95rem;margin-bottom:1rem;">All clinics and clubs are booked through Swift. Sign up for individual sessions, view current schedules, and see your member pricing.</p>
+      <a href="https://book.runswiftapp.com/facilities/mvp-training-facility" target="_blank" class="btn btn-primary swift-btn" style="display:inline-block;">See the Schedule and Register on Swift</a>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     ABOUT
+══════════════════════════════════════════════════ -->
+<div id="page-about" class="page">
+  <div class="page-hero" style="position:relative;overflow:hidden;">
+    <img src="assets/team1.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 54%;opacity:0.25;z-index:0;">
+    <h1 style="position:relative;z-index:1;">About MV Prospects</h1>
+    <p style="position:relative;z-index:1;">Ten-plus years of travel baseball in southern New Hampshire and northern Massachusetts.</p>
+  </div>
+  <section class="section">
+    <div class="split fade-in" style="margin-bottom:5rem;">
+      <div>
+        <div class="section-header"><h2>Our Story</h2></div>
+        <p style="color:var(--gray-700);margin-bottom:1rem;font-size:0.95rem;">The MVProspects started in 2014 as the Greater Nashua Prospects, an AAU club founded by Steve Adams, Chris Ward, and Lance Hedquist. From the start, the mission was clear: provide affordable, quality travel baseball and help players develop their skills and their love for the game.</p>
+        <p style="color:var(--gray-700);margin-bottom:1rem;font-size:0.95rem;">In 2020, the organization became the Merrimack Valley Prospects LLC, expanded beyond Nashua, and joined the NH Select League. By 2024, the program rebranded as MVP Baseball, with travel teams called the MV Prospects and a training facility that opened in 2025.</p>
+        <p style="color:var(--gray-700);font-size:0.95rem;">Over the years MVP has grown to 16 teams, sent 13 groups and 156 players to Cooperstown, and created memories for hundreds of kids across the region. Success here isn't only measured in wins. It's about a love for the game, building community, and helping every player grow on and off the field.</p>
+      </div>
+      <div class="split-img img-zoom about-action3" style="overflow:hidden;border-radius:6px;">
+        <img src="assets/action3.jpg" style="width:100%;height:100%;object-fit:cover;" loading="lazy" alt="MV Prospects game action">
+      </div>
+    </div>
+
+    <div class="section-header"><h2>Our Timeline</h2></div>
+    <div class="timeline" style="margin-bottom:0;">
+      <div class="timeline-item fade-in stagger-1">
+        <div class="timeline-year">2014</div>
+        <div class="timeline-content">
+          <h3>Greater Nashua Prospects Founded</h3>
+          <p>Steve Adams, Chris Ward, and Lance Hedquist start an AAU club in Nashua focused on affordable, quality travel baseball for southern New Hampshire players.</p>
+        </div>
+      </div>
+      <div class="timeline-item fade-in stagger-2">
+        <div class="timeline-year">2020</div>
+        <div class="timeline-content">
+          <h3>Merrimack Valley Prospects LLC</h3>
+          <p>The organization expands beyond Nashua, joins the NH Select League, and incorporates as an LLC to support a growing program.</p>
+        </div>
+      </div>
+      <div class="timeline-item fade-in stagger-3">
+        <div class="timeline-year">2024</div>
+        <div class="timeline-content">
+          <h3>Rebrand to MVP Baseball</h3>
+          <p>New name, new logo, expanded reach. Travel teams remain the MV Prospects. 16 active teams across all age groups.</p>
+        </div>
+      </div>
+      <div class="timeline-item fade-in stagger-4" style="padding-bottom:0;">
+        <div class="timeline-year">2025</div>
+        <div class="timeline-content">
+          <h3>MVP Training Facility Opens</h3>
+          <p>The organization opens its own facility at 472 Amherst Street in Nashua with turf cages, pitching mounds, and year-round availability.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact form on about page -->
+  <section class="section section-alt">
+    <div class="about-contact-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;">
+      <div>
+        <div class="section-header"><h2>Get in Touch</h2></div>
+        <p style="color:var(--gray-700);font-size:0.95rem;margin-bottom:1.2rem;">Questions about the program, tryouts, lessons, or facility? Send us a message and we'll get back to you.</p>
+        <div style="margin-top:2rem;">
+          <p style="font-size:0.88rem;color:var(--gray-700);margin-bottom:0.4rem;"><strong>Email:</strong> <a href="mailto:info@mvpbaseballnh.com" style="color:var(--blue);">info@mvpbaseballnh.com</a></p>
+          <p style="font-size:0.88rem;color:var(--gray-700);margin-bottom:0.4rem;"><strong>Address:</strong> 472 Amherst Street, Nashua, NH 03063</p>
+          <p style="font-size:0.88rem;color:var(--gray-700);margin-bottom:0.2rem;"><strong>Facebook:</strong> <a href="https://www.facebook.com/MerrimackValleyProspects/" target="_blank" style="color:var(--blue);">facebook.com/MerrimackValleyProspects</a></p>
+          <p style="font-size:0.88rem;color:var(--gray-700);margin-bottom:1rem;"><strong>Instagram:</strong> <a href="https://www.instagram.com/merrimackvalleyprospects/" target="_blank" style="color:var(--blue);">@merrimackvalleyprospects</a></p>
+          <div style="display:flex;gap:0.75rem;margin-top:0.5rem;">
+            <a href="https://www.facebook.com/MerrimackValleyProspects/" target="_blank"><img src="assets/facebook_logo.avif" alt="Facebook" style="width:28px;height:28px;object-fit:contain;"></a>
+            <a href="https://www.instagram.com/merrimackvalleyprospects/" target="_blank"><img src="assets/insta_logo.avif" alt="Instagram" style="width:28px;height:28px;object-fit:contain;"></a>
+            <a href="https://x.com/prospectsvalley" target="_blank"><img src="assets/x_logo.avif" alt="X" style="width:28px;height:28px;object-fit:contain;"></a>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-card fade-in">
+        <h3>Send a Message</h3>
+        <div id="aboutContactError" class="form-error"></div>
+        <div id="aboutContactSuccess" class="form-success">Message sent! We'll be in touch soon.</div>
+        <div id="aboutContactForm">
+          <p style="font-size:0.75rem;color:var(--gray-400);margin-bottom:1rem;">Please complete this form as a parent or guardian on behalf of your player.</p>
+          <div class="form-group"><label>Name *</label><input type="text" placeholder="Your name" id="aName"></div>
+          <div class="form-group"><label>Email *</label><input type="email" placeholder="email@example.com" id="aEmail"></div>
+          <div class="form-group">
+            <label>Subject</label>
+            <select id="aSubject">
+              <option value="">Select a topic</option>
+              <option>Tryouts</option>
+              <option>Private Lessons</option>
+              <option>Clinics</option>
+              <option>Facility Rental</option>
+              <option>General Question</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Message *</label><textarea placeholder="Your message..." id="aMessage"></textarea></div>
+          <div style="display:none;" aria-hidden="true"><input type="text" name="hp" id="hp_about" tabindex="-1" autocomplete="off"></div>
+          <button class="btn btn-primary" style="width:100%;" onclick="submitAboutContact()">Send Message</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<div id="page-privacy" class="page">
+  <div class="page-hero">
+    <h1>Privacy Policy</h1>
+    <p>Last updated: July 2026</p>
+  </div>
+  <section class="section">
+    <div style="max-width:760px;">
+      <p style="color:var(--gray-700);font-size:0.95rem;margin-bottom:2rem;">MV Prospects Baseball / Merrimack Valley Prospects LLC ("MVP Baseball," "we," "us") operates this website. This policy explains what personal information we collect, why we collect it, and how it is used.</p>
+
+      <h3 style="margin-bottom:0.6rem;margin-top:1.5rem;">1. Who We Are</h3>
+      <p style="color:var(--gray-700);font-size:0.9rem;margin-bottom:1.5rem;">Merrimack Valley Prospects LLC, 472 Amherst Street, Nashua, NH 03063. Contact: <a href="mailto:info@mvpbaseballnh.com" style="color:var(--blue);">info@mvpbaseballnh.com</a>. This website is built and maintained by Baseline Studio (<a href="https://baselinestudio.org" target="_blank" style="color:var(--blue);">baselinestudio.org</a>).</p>
+
+      <h3 style="margin-bottom:0.6rem;margin-top:1.5rem;">2. Information We Collect</h3>
+      <p style="color:var(--gray-700);font-size:0.9rem;margin-bottom:1.5rem;">We collect information you provide directly through our contact forms: your name, email address, optional phone number, and message content. We do not use tracking cookies, analytics scripts, or advertising pixels on this site.</p>
+
+      <h3 style="margin-bottom:0.6rem;margin-top:1.5rem;">3. How We Use Your Information</h3>
+      <p style="color:var(--gray-700);font-size:0.9rem;margin-bottom:1.5rem;">Information submitted through contact forms is used only to respond to your inquiry. We do not sell, rent, or share your personal information with third parties for marketing purposes.</p>
+
+      <h3 style="margin-bottom:0.6rem;margin-top:1.5rem;">4. Children's Privacy (COPPA)</h3>
+      <p style="color:var(--gray-700);font-size:0.9rem;margin-bottom:1.5rem;">Our programs serve players under the age of 13. All contact forms on this site are intended to be completed by a parent or guardian on behalf of a child, not by the child directly. We do not knowingly collect personal information directly from children under 13. If you believe a child has submitted personal information without parental consent, contact us at <a href="mailto:info@mvpbaseballnh.com" style="color:var(--blue);">info@mvpbaseballnh.com</a> and we will remove it promptly.</p>
+
+      <h3 style="margin-bottom:0.6rem;margin-top:1.5rem;">5. Data Retention</h3>
+      <p style="color:var(--gray-700);font-size:0.9rem;margin-bottom:1.5rem;">Contact form submissions are retained only as long as necessary to respond to your inquiry. You may request deletion at any time by emailing us.</p>
+
+      <h3 style="margin-bottom:0.6rem;margin-top:1.5rem;">6. Your Rights</h3>
+      <p style="color:var(--gray-700);font-size:0.9rem;margin-bottom:1.5rem;">You have the right to request access to, correction of, or deletion of your personal information, and to withdraw consent at any time. Email <a href="mailto:info@mvpbaseballnh.com" style="color:var(--blue);">info@mvpbaseballnh.com</a> to exercise any of these rights.</p>
+
+      <h3 style="margin-bottom:0.6rem;margin-top:1.5rem;">7. Third-Party Services</h3>
+      <p style="color:var(--gray-700);font-size:0.9rem;margin-bottom:1.5rem;">This site embeds a Facebook Page Plugin to display our public Facebook feed. When you view this embed, Facebook may set cookies and collect data per their own policy at <a href="https://www.facebook.com/privacy/policy/" target="_blank" style="color:var(--blue);">facebook.com/privacy/policy</a>. External links (Perfect Game, RunSwift) are governed by those platforms' own policies.</p>
+
+      <h3 style="margin-bottom:0.6rem;margin-top:1.5rem;">8. Cookies</h3>
+      <p style="color:var(--gray-700);font-size:0.9rem;margin-bottom:1.5rem;">This site itself does not set cookies. The Facebook embed may set third-party cookies. You can manage or block cookies through your browser settings.</p>
+
+      <h3 style="margin-bottom:0.6rem;margin-top:1.5rem;">9. Contact</h3>
+      <p style="color:var(--gray-700);font-size:0.9rem;">Questions? Email <a href="mailto:info@mvpbaseballnh.com" style="color:var(--blue);">info@mvpbaseballnh.com</a> or write to: Merrimack Valley Prospects LLC, 472 Amherst Street, Nashua, NH 03063.</p>
+    </div>
+  </section>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════
+     RECRUITING
+══════════════════════════════════════════════════ -->
+<div id="page-recruiting" class="page">
+  <div class="page-hero" style="position:relative;overflow:hidden;">
+    <img src="assets/action3.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.25;z-index:0;">
+    <h1 style="position:relative;z-index:1;">Cam Cook Recruiting Program</h1>
+    <p style="position:relative;z-index:1;">Your step-by-step pathway to college baseball, starting pre-freshman year.</p>
+  </div>
+
+  <section class="section">
+    <div>
+      <div class="section-header"><h2>About the Program</h2></div>
+      <p style="color:var(--gray-700);font-size:0.95rem;margin-bottom:2rem;">The Cam Cook Recruiting Program is a year-by-year roadmap that helps athletes develop early and market themselves effectively when it's time to get in front of college coaches.</p>
+
+      <div class="section-header"><h2>About Cam Cook</h2></div>
+      <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:3rem;margin-bottom:3rem;" class="fade-in cam-bio-grid">
+        <div>
+          <p style="color:var(--gray-700);font-size:0.9rem;line-height:1.7;margin-bottom:1.2rem;">Cam is currently the General Manager of the Nashua Silver Knights in the Futures League. He is entering his 7th season at the helm, and in his time the Knights have won 2 league championships and seen 5 of his players selected in the MLB Draft.</p>
+          <div id="camBioMore" class="cam-bio-more">
+            <p style="color:var(--gray-700);font-size:0.9rem;line-height:1.7;margin-bottom:1.2rem;">Before entering the front office, Cam was the Silver Knights third baseman from 2016 to 2017, both of those championship years. Cam set the single season hits record while capturing the 2017 FCBL batting title.</p>
+            <p style="color:var(--gray-700);font-size:0.9rem;line-height:1.7;">Cam aims to help develop hitters and infielders throughout the off season, while assisting high school level players in the college recruiting process. He is available for individual and group training at the MVP Training Center.</p>
+          </div>
+          <button class="cam-bio-toggle" id="camBioToggleBtn" onclick="toggleCamBio()">Read More</button>
+        </div>
+        <div class="cam-bio-more" id="camBioAwards">
+          <ul style="list-style:none;">
+            <li style="padding:0.5rem 0;font-size:0.88rem;color:var(--gray-700);border-bottom:1px solid var(--gray-100);"><strong style="color:var(--black);">4x</strong> FCBL Champion</li>
+            <li style="padding:0.5rem 0;font-size:0.88rem;color:var(--gray-700);border-bottom:1px solid var(--gray-100);"><strong style="color:var(--black);">2020</strong> FCBL Executive of the Year</li>
+            <li style="padding:0.5rem 0;font-size:0.88rem;color:var(--gray-700);border-bottom:1px solid var(--gray-100);"><strong style="color:var(--black);">2017</strong> FCBL Batting Champion</li>
+            <li style="padding:0.5rem 0;font-size:0.88rem;color:var(--gray-700);border-bottom:1px solid var(--gray-100);">FCBL Single Season Hits Record <strong style="color:var(--black);">(81)</strong></li>
+            <li style="padding:0.5rem 0;font-size:0.88rem;color:var(--gray-700);border-bottom:1px solid var(--gray-100);"><strong style="color:var(--black);">2x</strong> All New England 2B</li>
+            <li style="padding:0.5rem 0;font-size:0.88rem;color:var(--gray-700);border-bottom:1px solid var(--gray-100);"><strong style="color:var(--black);">3x</strong> All Commonwealth Coast Conference 2B</li>
+            <li style="padding:0.5rem 0;font-size:0.88rem;color:var(--gray-700);border-bottom:1px solid var(--gray-100);">Nichols College Single Season Hits Record <strong style="color:var(--black);">(67)</strong></li>
+            <li style="padding:0.5rem 0;font-size:0.88rem;color:var(--gray-700);">Nichols College Career Hits Record <strong style="color:var(--black);">(210)</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="blueprint-box fade-in">
+        <h3>Included Every Year</h3>
+        <div class="blueprint-list">
+          <div class="blueprint-item">
+            <span class="bp-num">01</span>
+            <p><strong>1 Annual Rapsodo Performance Session</strong><br>Establish and track objective data baselines including pitch velocity, exit velocity, spin metrics, and launch angles.</p>
+          </div>
+          <div class="blueprint-item">
+            <span class="bp-num">02</span>
+            <p><strong>1 Dedicated Strategy &amp; Action-Plan Meeting</strong><br>A focused review with Cam to outline development priorities for the upcoming season.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-header" style="margin-left:1.4rem;"><h2>The Year-by-Year Roadmap</h2></div>
+      <div class="roadmap-row fade-in">
+        <div class="roadmap-card">
+          <div class="roadmap-year">Freshman Year</div>
+          <div class="roadmap-focus">Development &amp; Goal Setting</div>
+          <p class="roadmap-details">Laying the foundation, identifying baselines, and making a plan for the upcoming year.</p>
+          <div class="roadmap-price">$399 <span>MVP Players</span>$499 <span>Outside Players</span></div>
+        </div>
+        <div class="roadmap-card">
+          <div class="roadmap-year">Sophomore Year</div>
+          <div class="roadmap-focus">Development &amp; Goal Setting</div>
+          <p class="roadmap-details">Staying on track, physical development check-ins, and adjusting training priorities.</p>
+          <div class="roadmap-price">$399 <span>MVP Players</span>$499 <span>Outside Players</span></div>
+        </div>
+        <div class="roadmap-card">
+          <div class="roadmap-year">Junior Year</div>
+          <div class="roadmap-focus">Active Recruiting &amp; Self-Marketing</div>
+          <p class="roadmap-details">Transitioning from development into a major marketing push. Learn how to market yourself through recruiting videos and social media strategy, and leverage Cam Cook's network of college coaching contacts.</p>
+          <p class="roadmap-comm">Constant, ongoing support throughout the year.</p>
+          <div class="roadmap-price">$599 <span>MVP Players</span>$699 <span>Outside Players</span></div>
+        </div>
+        <div class="roadmap-card">
+          <div class="roadmap-year">Senior Year</div>
+          <div class="roadmap-focus">Closing the Deal</div>
+          <p class="roadmap-details">Executing the final push. Tuning and polishing recruiting messages, handling last-minute college outreach, and securing commitments.</p>
+          <div class="roadmap-price">$699 <span>MVP Players</span>$799 <span>Outside Players</span></div>
+        </div>
+      </div>
+
+      <div class="recruit-questions-banner fade-in">
+        <h3>Have Questions?</h3>
+        <p>For more information or custom inquiries, contact us directly at <a href="mailto:recruiting@mvprospectsnh.com">recruiting@mvprospectsnh.com</a>.</p>
+      </div>
+
+      <div class="section-header" style="justify-content:center;width:100%;"><h2>Register for the Program</h2></div>
+      <div class="contact-form-card fade-in" style="max-width:560px;margin:0 auto;">
+        <h3>Player Registration</h3>
+        <div id="recruitError" class="form-error"></div>
+        <div id="recruitSuccess" class="form-success">Registration received! We will follow up by email with payment details to complete your spot.</div>
+        <div id="recruitForm">
+          <div class="form-row">
+            <div class="form-group"><label>Player First Name *</label><input type="text" placeholder="First" id="rFirstName"></div>
+            <div class="form-group"><label>Player Last Name *</label><input type="text" placeholder="Last" id="rLastName"></div>
+          </div>
+          <div class="form-group"><label>Contact Email *</label><input type="email" placeholder="email@example.com" id="rEmail"></div>
+          <div class="form-group"><label>Contact Phone *</label><input type="tel" placeholder="(603) 555-0000" id="rPhone" oninput="formatPhoneInput(this)"></div>
+          <div class="form-group">
+            <label>Upcoming School Year *</label>
+            <select id="rGradYear" onchange="updateRecruitPrice()">
+              <option value="">Select year</option>
+              <option value="freshman">Freshman</option>
+              <option value="sophomore">Sophomore</option>
+              <option value="junior">Junior</option>
+              <option value="senior">Senior</option>
+            </select>
+          </div>
+          <div class="toggle-row">
+            <input type="checkbox" id="rMvpPlayer" onchange="updateRecruitPrice()">
+            <label for="rMvpPlayer" style="cursor:pointer;">I am a current MVProspects club player</label>
+          </div>
+
+          <div class="price-summary" id="recruitPriceSummary" style="display:none;">
+            <div class="price-summary-row"><span>Program fee</span><span id="rBasePrice">$0.00</span></div>
+            <div class="price-summary-row"><span>Payment processing fee</span><span id="rFeePrice">$0.00</span></div>
+            <div class="price-summary-row total"><span>Total</span><span id="rTotalPrice">$0.00</span></div>
+          </div>
+
+          <div style="display:none;" aria-hidden="true"><input type="text" name="hp" id="hp_recruit" tabindex="-1" autocomplete="off"></div>
+          <button class="btn btn-primary" style="width:100%;" onclick="continueToRecruitPayment()">Continue to Payment</button>
+        </div>
+
+        <div id="recruitPaymentStep" style="display:none;">
+          <div class="price-summary" style="margin-bottom:1.2rem;margin-top:1.4rem;">
+            <div class="price-summary-row"><span>Player</span><span id="paySummaryName"></span></div>
+            <div class="price-summary-row"><span>Program</span><span id="paySummaryTier"></span></div>
+            <div class="price-summary-row total"><span>Amount Due</span><span id="paySummaryTotal">$0.00</span></div>
+          </div>
+
+          <div class="form-group"><label>Name on Card</label><input type="text" placeholder="Full name" id="rCardName"></div>
+          <div class="form-group"><label>Card Number</label><input type="text" inputmode="numeric" placeholder="4242 4242 4242 4242" maxlength="19" id="rCardNumber" oninput="formatCardNumberInput(this)"></div>
+          <div class="form-row">
+            <div class="form-group"><label>Expiry</label><input type="text" inputmode="numeric" placeholder="MM / YY" maxlength="7" id="rCardExpiry" oninput="formatExpiryInput(this)"></div>
+            <div class="form-group"><label>CVC</label><input type="text" inputmode="numeric" placeholder="CVC" maxlength="3" id="rCardCvc" oninput="formatCvcInput(this)"></div>
+          </div>
+
+          <button class="btn btn-primary" style="width:100%;" onclick="submitRecruitPayment()" id="rPayButton">Pay</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="assets/mvplogo.avif" alt="MV Prospects" style="height:48px;width:auto;filter:none;">
+      <p style="margin-top:0.8rem;">Developing the next generation of players on and off the field.</p>
+      <div class="footer-social" style="margin-top:1rem;">
+        <a href="https://www.facebook.com/MerrimackValleyProspects/" target="_blank" style="background:none;padding:0;width:auto;height:auto;border-radius:0;"><img src="assets/facebook_logo.avif" alt="Facebook" style="width:32px;height:32px;object-fit:contain;filter:brightness(0) invert(1);"></a>
+        <a href="https://www.instagram.com/merrimackvalleyprospects/" target="_blank" style="background:none;padding:0;width:auto;height:auto;border-radius:0;"><img src="assets/insta_logo.avif" alt="Instagram" style="width:32px;height:32px;object-fit:contain;filter:brightness(0) invert(1);"></a>
+        <a href="https://x.com/prospectsvalley" target="_blank" style="background:none;padding:0;width:auto;height:auto;border-radius:0;"><img src="assets/x_logo.avif" alt="X" style="width:32px;height:32px;object-fit:contain;filter:brightness(0) invert(1);"></a>
+      </div>
+    </div>
+    <div class="footer-two-col">
+    <div class="footer-col">
+      <h4>Pages</h4>
+      <a href="#" onclick="showPage('home'); return false;">Home</a>
+      <a href="#" onclick="showPage('about'); return false;">About Us</a>
+      <a href="#" onclick="showPage('teams'); return false;">Teams</a>
+      <a href="#" onclick="showPage('tryouts'); return false;">Tryouts</a>
+      <a href="#" onclick="showPage('lessons'); return false;">Lessons</a>
+      <a href="#" onclick="showPage('clinics'); return false;">Clinics</a>
+      <a href="https://book.runswiftapp.com/facilities/mvp-training-facility" target="_blank">Facility</a>
+    </div>
+    <div class="footer-col footer-mobile-contact">
+      <h4>Contact</h4>
+      <p>info@mvpbaseballnh.com<br>472 Amherst Street<br>Nashua, NH 03063</p>
+    </div>
+    </div><!-- end footer-two-col -->
+    <div class="footer-col footer-contact-col">
+      <h4>Contact</h4>
+      <p>info@mvpbaseballnh.com<br>472 Amherst Street<br>Nashua, NH 03063</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 MV Prospects Baseball &middot; Merrimack Valley Prospects LLC &middot; <a href="#" onclick="showPage('privacy'); return false;" style="color:rgba(255,255,255,0.4);">Privacy Policy</a></span>
+    <span>Site by <a href="https://baselinestudio.org" target="_blank">Baseline Studio</a></span>
+  </div>
+</footer>
+
+<script>
+  /* ── TEAMS DATA ── */
+  const TEAMS = [
+    { age:'9U Black',  coach:'Randy Medeiros',   pgUrl:'https://www.perfectgame.org/PGBA/Team/default.aspx?orgid=47156&orgteamid=272155&team=1057125&Year=2026' },
+    { age:'9U Royal',  coach:'Casey Marques',    pgUrl:'https://www.perfectgame.org/PGBA/Team/default.aspx?orgid=47156&orgteamid=272156&team=1057126&Year=2026' },
+    { age:'10U Black', coach:'Vince Lehman',      pgUrl:'https://www.perfectgame.org/PGBA/Team/default.aspx?orgid=47156&orgteamid=272157&team=1057129&Year=2026' },
+    { age:'10U Royal', coach:'Jim Patierno',      pgUrl:'https://www.perfectgame.org/PGBA/Team/default.aspx?orgid=47156&orgteamid=272304&team=1057130&Year=2026' },
+    { age:'11U Black', coach:'Andrew Ciardelli',  pgUrl:'https://www.perfectgame.org/PGBA/Team/default.aspx?orgid=47156&orgteamid=272305&team=1057131&Year=2026' },
+    { age:'11U Royal', coach:'Chris Lupoli',      pgUrl:'https://www.perfectgame.org/PGBA/Team/default.aspx?orgid=47156&orgteamid=272306&team=1057132&Year=2026' },
+    { age:'12U Black', coach:'Josh McCallister',  pgUrl:'https://www.perfectgame.org/PGBA/Team/default.aspx?orgid=47156&orgteamid=272309&team=1057133&Year=2026' },
+    { age:'12U Royal', coach:'Ryan Pelletier',    pgUrl:'https://www.perfectgame.org/PGBA/Team/default.aspx?orgid=47156&orgteamid=272310&team=1057134&Year=2026' },
+    { age:'12U White', coach:'Mike Gagnon',       pgUrl:'https://www.perfectgame.org/PGBA/Team/default.aspx?orgid=47156&orgteamid=272312&team=1057135&Year=2026' },
+    { age:'13U Black', coach:'Jeff Nichols',      pgUrl:'https://www.perfectgame.org/PGBA/Team/default.aspx?orgid=47156&orgteamid=272313&team=1057136&Year=2026' },
+    { age:'13U Royal', coach:'Rob Smith',         pgUrl:'https://www.perfectgame.org/PGBA/Team/default.aspx?orgid=47156&orgteamid=272314&team=1057137&Year=2026' },
+    { age:'13U White', coach:'Dean Adams',        pgUrl:'https://www.perfectgame.org/PGBA/Team/default.aspx?orgid=47156&orgteamid=272315&team=1057138&Year=2026' },
+    { age:'14U Black', coach:'Jacob Hobart',      pgUrl:'https://www.perfectgame.org/PGBA/Team/default.aspx?orgid=47156&orgteamid=272399&team=1057140&Year=2026' },
+    { age:'14U Royal', coach:'Greg Frink',        pgUrl:'https://www.perfectgame.org/PGBA/Team/default.aspx?orgid=47156&orgteamid=272316&team=1057139&Year=2026' },
+    { age:'15U',       coach:'Jon Juchnevics',    pgUrl:'https://www.perfectgame.org/PGBA/Team/default.aspx?orgid=47156&orgteamid=272317&Year=2026' },
+    { age:'17U',       coach:'Ray DeRusha',       pgUrl:'https://www.perfectgame.org/PGBA/Team/default.aspx?orgid=47156&orgteamid=272318&Year=2026' },
+  ];
+
+  function buildTeamsGrid() {
+    const grid = document.getElementById('teamsGrid');
+    if (!grid) return;
+    grid.innerHTML = TEAMS.map((t, i) => `
+      <div class="team-card visible" style="animation-delay:${Math.min(i * 0.04, 0.5)}s">
+        <div class="team-left">
+          <div class="team-age">${t.age}</div>
+          <div class="team-coach"><strong>Head Coach:</strong> ${t.coach}</div>
+        </div>
+        <div class="team-actions">
+          <a href="${t.pgUrl}" target="_blank">View Roster &amp; Schedule &nearr;</a>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function buildTeamsDropdown() {
+    const dd = document.getElementById('teamsDropdown');
+    if (!dd) return;
+    const allTeamsLink = `<a href="#" onclick="showPage('teams'); return false;" style="font-weight:600;color:var(--blue);">All Teams</a>`;
+    dd.innerHTML = allTeamsLink + TEAMS.map(t =>
+      `<a href="${t.pgUrl}" target="_blank">${t.age}</a>`
+    ).join('');
+  }
+
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    const pg = document.getElementById('page-' + id);
+    if (pg) { pg.classList.add('active'); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    if (id === 'teams') buildTeamsGrid();
+  }
+
+  function toggleMobile() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  /* FORMS */
+  function sendEmail(to, subject, body, successId, formId) {
+    // Wire EmailJS here: emailjs.send('SERVICE_ID','TEMPLATE_ID',{to_email:to,subject:subject,message:body});
+    document.getElementById(formId).style.display = 'none';
+    document.getElementById(successId).style.display = 'block';
+  }
+  function showErr(id, msg) { var e=document.getElementById(id); e.textContent=msg; e.style.display='block'; }
+
+  function submitHomeContact() {
+    if (document.getElementById('hp_home').value) return;
+    var name=document.getElementById('hName').value.trim();
+    var email=document.getElementById('hEmail').value.trim();
+    var subject=document.getElementById('hSubject').value;
+    var msg=document.getElementById('hMessage').value.trim();
+    if (!name||!email||!msg) { showErr('homeContactError','Please fill in all required fields.'); return; }
+    document.getElementById('homeContactError').style.display='none';
+    sendEmail('info@mvpbaseballnh.com','Contact: '+subject,'Name: '+name+'\nEmail: '+email+'\nSubject: '+subject+'\nMessage: '+msg,'homeContactSuccess','homeContactForm');
+  }
+
+  function submitTryoutContact() {
+    if (document.getElementById('hp_tryout').value) return;
+    var name=document.getElementById('tName').value.trim();
+    var email=document.getElementById('tEmail').value.trim();
+    var msg=document.getElementById('tMessage').value.trim();
+    if (!name||!email||!msg) { showErr('tryoutContactError','Please fill in all required fields.'); return; }
+    document.getElementById('tryoutContactError').style.display='none';
+    sendEmail('info@mvpbaseballnh.com','Tryout Question','Name: '+name+'\nEmail: '+email+'\nMessage: '+msg,'tryoutContactSuccess','tryoutContactForm');
+  }
+
+  function submitAboutContact() {
+    if (document.getElementById('hp_about').value) return;
+    var name=document.getElementById('aName').value.trim();
+    var email=document.getElementById('aEmail').value.trim();
+    var subject=document.getElementById('aSubject').value;
+    var msg=document.getElementById('aMessage').value.trim();
+    if (!name||!email||!msg) { showErr('aboutContactError','Please fill in all required fields.'); return; }
+    document.getElementById('aboutContactError').style.display='none';
+    sendEmail('info@mvpbaseballnh.com','Contact: '+subject,'Name: '+name+'\nEmail: '+email+'\nSubject: '+subject+'\nMessage: '+msg,'aboutContactSuccess','aboutContactForm');
+  }
+
+  /* ── FACEBOOK SDK ── */
+  window.fbAsyncInit = function() {
+    FB.init({ appId: '', cookie: true, xfbml: true, version: 'v19.0' });
+    FB.Event.subscribe('xfbml.render', function() {
+      // hide fallback if SDK rendered successfully
+    });
+  };
+  (function(d, s, id) {
+    if (d.getElementById(id)) return;
+    var js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/en_US/sdk.js';
+    js.onerror = function() {
+      var el = document.getElementById('fbFallback');
+      if (el) { el.style.display = 'block'; el.previousElementSibling && (el.previousElementSibling.style.display = 'none'); }
+    };
+    d.getElementsByTagName('head')[0].appendChild(js);
+  }(document, 'script', 'facebook-jssdk'));
+
+
+  /* INTERSECTION OBSERVER - fade-in animations */
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  function initAnimations() {
+    document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(function(el) {
+      observer.observe(el);
+    });
+    document.querySelectorAll('.section-header').forEach(function(el) {
+      observer.observe(el);
+    });
+  }
+
+  /* STATS COUNT-UP */
+  var countUpDone = false;
+  function runCountUp() {
+    if (countUpDone) return;
+    countUpDone = true;
+    document.querySelectorAll('.stat-num[data-target]').forEach(function(el) {
+      var target = parseInt(el.dataset.target);
+      var suffix = el.dataset.suffix || '';
+      var start  = el.dataset.start ? parseInt(el.dataset.start) : 0;
+      var duration = 1500;
+      var startTime = null;
+      function step(ts) {
+        if (!startTime) startTime = ts;
+        var progress = Math.min((ts - startTime) / duration, 1);
+        var ease = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(start + (target - start) * ease) + (progress >= 1 ? suffix : '');
+        if (progress < 1) requestAnimationFrame(step);
+        else { el.classList.add('glow'); }
+      }
+      requestAnimationFrame(step);
+    });
+  }
+
+  var statsObs = new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting) { runCountUp(); }
+  }, { threshold: 0.4 });
+  var statsBar = document.querySelector('.stats-bar');
+  if (statsBar) statsObs.observe(statsBar);
+
+  /* COOKIE BANNER */
+  function closeCookieBanner() {
+    document.getElementById('cookieBanner').style.display = 'none';
+    try { localStorage.setItem('mvp_cookie_ok','1'); } catch(e) {}
+  }
+  (function() {
+    try { if (!localStorage.getItem('mvp_cookie_ok')) document.getElementById('cookieBanner').style.display = 'flex'; }
+    catch(e) {}
+  })();
+
+  /* Re-init animations on page switch */
+  var _origShowPage = showPage;
+  showPage = function(id) {
+    _origShowPage(id);
+    setTimeout(initAnimations, 50);
+  };
+
+
+  /* MOBILE TEAMS DROPDOWN */
+  function buildMobileTeamsSubmenu() {
+    var sub = document.getElementById('mobileTeamsSubmenu');
+    if (!sub || sub.dataset.built) return;
+    TEAMS.forEach(function(t) {
+      var a = document.createElement('a');
+      a.href = t.pgUrl; a.target = '_blank';
+      a.textContent = t.age;
+      a.style.cssText = 'display:block;padding:0.6rem 2rem;font-size:0.82rem;color:rgba(255,255,255,0.65);border-bottom:1px solid rgba(255,255,255,0.04);font-family:Oswald,sans-serif;letter-spacing:0.05em;text-transform:uppercase;';
+      sub.appendChild(a);
+    });
+    sub.dataset.built = '1';
+  }
+
+  function toggleMobileTeams() {
+    buildMobileTeamsSubmenu();
+    var sub = document.getElementById('mobileTeamsSubmenu');
+    var chev = document.getElementById('mobileChevron');
+    sub.classList.toggle('open');
+    chev.classList.toggle('open');
+  }
+
+  /* MOBILE HERO BG IMAGES */
+  // Maps hero ID -> the src of the image to use as bg, and CSS selectors of images to hide
+  /* Hero bg images now hardcoded in HTML on all screen sizes */
+
+
+  /* FACEBOOK EMBED: measure container width, inject correct width into plugin */
+  function buildFbEmbed() {
+    var container = document.getElementById('fbPageContainer');
+    if (!container) return;
+    var w = Math.min(container.parentElement.offsetWidth || 500, 500);
+    if (w < 180) w = 340;
+    container.innerHTML = '<div class="fb-page"' +
+      ' data-href="https://www.facebook.com/MerrimackValleyProspects/"' +
+      ' data-tabs="timeline"' +
+      ' data-width="' + w + '"' +
+      ' data-height="500"' +
+      ' data-small-header="false"' +
+      ' data-adapt-container-width="false"' +
+      ' data-hide-cover="false"' +
+      ' data-show-facepile="false"></div>';
+    if (window.FB) { FB.XFBML.parse(container); }
+  }
+
+  window.addEventListener('load', buildFbEmbed);
+  window.addEventListener('resize', function() {
+    clearTimeout(window._fbResizeTimer);
+    window._fbResizeTimer = setTimeout(buildFbEmbed, 250);
+  });
+
+  /* NAV SHADOW + BACK-TO-TOP on scroll */
+  var navEl = document.querySelector('.nav');
+  var backTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', function() {
+    var y = window.scrollY;
+    if (navEl) navEl.classList.toggle('scrolled', y > 10);
+    if (backTop) backTop.classList.toggle('show', y > 600);
+  }, { passive: true });
+
+  /* FACEBOOK FALLBACK: if no iframe rendered within 5s, show fallback */
+  setTimeout(function() {
+    var container = document.getElementById('fbPageContainer');
+    var fallback = document.getElementById('fbFallback');
+    if (container && fallback && !container.querySelector('iframe')) {
+      fallback.style.display = 'block';
+    }
+  }, 5000);
+
+
+  /* CAM COOK BIO: mobile read more toggle */
+  function toggleCamBio() {
+    var bioMore = document.getElementById('camBioMore');
+    var awards = document.getElementById('camBioAwards');
+    var btn = document.getElementById('camBioToggleBtn');
+    var isOpen = bioMore.classList.toggle('open');
+    awards.classList.toggle('open', isOpen);
+    btn.textContent = isOpen ? 'Show Less' : 'Read More';
+  }
+
+  /* INPUT FORMATTING HELPERS */
+  function formatPhoneInput(el) {
+    var digits = el.value.replace(/\D/g, '').slice(0, 10);
+    var out = digits;
+    if (digits.length > 6) {
+      out = '(' + digits.slice(0, 3) + ') ' + digits.slice(3, 6) + '-' + digits.slice(6);
+    } else if (digits.length > 3) {
+      out = '(' + digits.slice(0, 3) + ') ' + digits.slice(3);
+    } else if (digits.length > 0) {
+      out = '(' + digits;
+    }
+    el.value = out;
+  }
+
+  function formatCardNumberInput(el) {
+    var digits = el.value.replace(/\D/g, '').slice(0, 16);
+    var groups = digits.match(/.{1,4}/g) || [];
+    el.value = groups.join(' ');
+  }
+
+  function formatExpiryInput(el) {
+    var digits = el.value.replace(/\D/g, '').slice(0, 4);
+    if (digits.length >= 1) {
+      var first = digits.charAt(0);
+      if (first !== '0' && first !== '1') {
+        digits = '0' + digits;
+        digits = digits.slice(0, 4);
+      }
+    }
+    if (digits.length >= 2) {
+      var mm = parseInt(digits.slice(0, 2), 10);
+      if (mm > 12) digits = '12' + digits.slice(2);
+      if (mm === 0) digits = '01' + digits.slice(2);
+    }
+    el.value = digits.length > 2 ? digits.slice(0, 2) + ' / ' + digits.slice(2) : digits;
+  }
+
+  function formatCvcInput(el) {
+    el.value = el.value.replace(/\D/g, '').slice(0, 3);
+  }
+
+  /* RECRUITING PROGRAM: pricing + registration */
+  var RECRUIT_PRICES = {
+    freshman:  { mvp: 399, outside: 499 },
+    sophomore: { mvp: 399, outside: 499 },
+    junior:    { mvp: 599, outside: 699 },
+    senior:    { mvp: 699, outside: 799 }
+  };
+
+  function calcRecruitTotal(base) {
+    var fee = base * 0.039 + 0.30;
+    var total = base + fee;
+    return { fee: fee, total: total };
+  }
+
+  function updateRecruitPrice() {
+    var tier = document.getElementById('rGradYear').value;
+    var isMvp = document.getElementById('rMvpPlayer').checked;
+    var summary = document.getElementById('recruitPriceSummary');
+
+    if (!tier) { summary.style.display = 'none'; return; }
+
+    var base = isMvp ? RECRUIT_PRICES[tier].mvp : RECRUIT_PRICES[tier].outside;
+    var calc = calcRecruitTotal(base);
+
+    document.getElementById('rBasePrice').textContent = '$' + base.toFixed(2);
+    document.getElementById('rFeePrice').textContent = '$' + calc.fee.toFixed(2);
+    document.getElementById('rTotalPrice').textContent = '$' + calc.total.toFixed(2);
+    summary.style.display = 'block';
+  }
+
+  function continueToRecruitPayment() {
+    if (document.getElementById('hp_recruit').value) return;
+
+    var first = document.getElementById('rFirstName').value.trim();
+    var last = document.getElementById('rLastName').value.trim();
+    var email = document.getElementById('rEmail').value.trim();
+    var phone = document.getElementById('rPhone').value.trim();
+    var tier = document.getElementById('rGradYear').value;
+    var isMvp = document.getElementById('rMvpPlayer').checked;
+
+    if (!first || !last || !email || !phone || !tier) {
+      showErr('recruitError', 'Please fill in all required fields.');
+      return;
+    }
+    document.getElementById('recruitError').style.display = 'none';
+
+    var base = isMvp ? RECRUIT_PRICES[tier].mvp : RECRUIT_PRICES[tier].outside;
+    var calc = calcRecruitTotal(base);
+    var tierLabel = tier.charAt(0).toUpperCase() + tier.slice(1);
+
+    document.getElementById('paySummaryName').textContent = first + ' ' + last;
+    document.getElementById('paySummaryTier').textContent = tierLabel + ' Year (' + (isMvp ? 'MVP Player' : 'Outside Player') + ')';
+    document.getElementById('paySummaryTotal').textContent = '$' + calc.total.toFixed(2);
+    document.getElementById('rPayButton').textContent = 'Pay $' + calc.total.toFixed(2);
+
+    document.getElementById('recruitPaymentStep').style.display = 'block';
+    document.getElementById('recruitPaymentStep').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function submitRecruitPayment() {
+    var cardName = document.getElementById('rCardName').value.trim();
+    var cardNumber = document.getElementById('rCardNumber').value.trim();
+    var cardExpiry = document.getElementById('rCardExpiry').value.trim();
+    var cardCvc = document.getElementById('rCardCvc').value.trim();
+
+    if (!cardName || !cardNumber || !cardExpiry || !cardCvc) {
+      showErr('recruitError', 'Please fill in all card details to continue.');
+      return;
+    }
+    document.getElementById('recruitError').style.display = 'none';
+
+    var first = document.getElementById('rFirstName').value.trim();
+    var last = document.getElementById('rLastName').value.trim();
+    var email = document.getElementById('rEmail').value.trim();
+    var phone = document.getElementById('rPhone').value.trim();
+    var tier = document.getElementById('rGradYear').value;
+    var isMvp = document.getElementById('rMvpPlayer').checked;
+    var base = isMvp ? RECRUIT_PRICES[tier].mvp : RECRUIT_PRICES[tier].outside;
+    var calc = calcRecruitTotal(base);
+    var tierLabel = tier.charAt(0).toUpperCase() + tier.slice(1);
+
+    var body = 'Player: ' + first + ' ' + last +
+      '\nContact Email: ' + email +
+      '\nContact Phone: ' + phone +
+      '\nUpcoming School Year: ' + tierLabel +
+      '\nMVProspects Club Player: ' + (isMvp ? 'Yes' : 'No') +
+      '\nBase Price: $' + base.toFixed(2) +
+      '\nProcessing Fee: $' + calc.fee.toFixed(2) +
+      '\nTotal Charged: $' + calc.total.toFixed(2) +
+      '\n[DEMO MODE: no real payment was processed]';
+
+    document.getElementById('recruitSuccess').textContent =
+      'Demo payment simulated! In production, Stripe would process a real charge of $' + calc.total.toFixed(2) + ' here.';
+    document.getElementById('recruitForm').style.display = 'none';
+
+    sendEmail('recruiting@mvprospectsnh.com', 'Recruiting Program Registration: ' + first + ' ' + last, body, 'recruitSuccess', 'recruitPaymentStep');
+  }
+
+  /* Init */
+  buildTeamsDropdown();
+  setTimeout(initAnimations, 100);
+  buildTeamsGrid();
+</script>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+  <svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<div id="cookieBanner" style="display:none;" class="cookie-banner">
+  <p>This site embeds a Facebook feed which may set cookies. We do not use our own tracking cookies. See our <a href="#" onclick="showPage('privacy'); closeCookieBanner(); return false;">Privacy Policy</a>.</p>
+  <button class="cookie-accept" onclick="closeCookieBanner()">Got It</button>
+</div>
 </body>
 </html>
