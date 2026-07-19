@@ -610,22 +610,6 @@
     .team-left { flex-direction: column; align-items: center; gap: 0.2rem; }
     .team-actions a { display: block; }
 
-    /* RECRUITING PAGE MOBILE FIXES */
-    .cam-bio-grid { grid-template-columns: 1fr !important; gap: 1rem !important; }
-    .cam-bio-more { display: none; }
-    .cam-bio-more.open { display: block; }
-    .cam-bio-toggle { display: inline-block !important; }
-
-    .blueprint-box { padding: 1.5rem 1.2rem !important; }
-    .blueprint-list { grid-template-columns: 1fr !important; gap: 1.2rem !important; }
-    .blueprint-item p { font-size: 0.82rem !important; line-height: 1.5 !important; }
-    .blueprint-item .bp-num { font-size: 1.2rem !important; }
-
-    .recruit-questions-banner { padding: 1.2rem 1rem !important; }
-    .recruit-questions-banner p { font-size: 0.82rem !important; }
-
-    .roadmap-price { text-align: left !important; }
-
     /* Mobile dropdown in menu */
     .mobile-submenu {
       display: none; background: rgba(255,255,255,0.05);
@@ -815,80 +799,6 @@
   .back-to-top svg { width: 20px; height: 20px; stroke: #fff; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
 
 
-  /* RECRUITING PAGE */
-  .blueprint-box {
-    background: var(--blue); color: var(--white);
-    border-radius: 8px; padding: 2rem clamp(1.5rem, 4vw, 2.5rem);
-    margin-bottom: 3rem;
-  }
-  .blueprint-box h3 { color: var(--white); font-size: 1.3rem; margin-bottom: 1.2rem; }
-  .blueprint-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
-  .blueprint-item { display: flex; gap: 0.9rem; align-items: flex-start; }
-  .blueprint-item .bp-num {
-    font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 1.4rem;
-    color: var(--gold); flex-shrink: 0; line-height: 1.2;
-  }
-  .blueprint-item p { font-size: 0.9rem; color: rgba(255,255,255,0.85); line-height: 1.55; margin: 0; }
-  .blueprint-item strong { color: var(--white); }
-
-  .roadmap-row {
-    display: flex; gap: 0; margin-bottom: 3rem;
-    border-top: 1px solid var(--gray-100);
-  }
-  .roadmap-card {
-    flex: 1; padding: 1.8rem 1.4rem; border-right: 1px solid var(--gray-100);
-    display: flex; flex-direction: column;
-  }
-  .roadmap-card:last-child { border-right: none; }
-  .roadmap-year { font-family: 'Oswald', sans-serif; font-size: 1.15rem; font-weight: 700; color: var(--black); margin-bottom: 0.2rem; }
-  .roadmap-focus { font-size: 0.78rem; color: var(--blue); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.9rem; }
-  .roadmap-details { font-size: 0.85rem; color: var(--gray-700); line-height: 1.6; margin-bottom: 1rem; }
-  .roadmap-comm { font-size: 0.78rem; color: var(--gray-400); margin-bottom: 1rem; font-style: italic; }
-  .roadmap-price { font-family: 'Oswald', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--black); border-top: 1px solid var(--gray-100); padding-top: 0.9rem; margin-top: auto; text-align: center; }
-  .roadmap-price span { display: block; font-size: 0.72rem; font-weight: 400; color: var(--gray-400); margin-top: 0.15rem; }
-
-  @media (max-width: 900px) {
-    .roadmap-row { flex-direction: column; border-top: none; }
-    .roadmap-card { border-right: none; border-top: 1px solid var(--gray-100); }
-    .roadmap-card:first-child { border-top: none; }
-  }
-
-  .cam-bio-toggle {
-    display: none;
-    background: none; border: none; padding: 0;
-    color: var(--blue); font-weight: 600; font-size: 0.85rem;
-    cursor: pointer; margin-top: 0.2rem;
-  }
-  .cam-bio-toggle:hover { text-decoration: underline; }
-
-  .recruit-questions-banner {
-    background: var(--gray-50); border: 1px solid var(--gray-100);
-    border-radius: 8px; padding: 1.6rem 2rem; margin-bottom: 3rem;
-    text-align: center;
-  }
-  .recruit-questions-banner h3 { font-size: 1.1rem; margin-bottom: 0.4rem; }
-  .recruit-questions-banner p { font-size: 0.9rem; color: var(--gray-700); overflow-wrap: break-word; word-break: break-word; }
-  .recruit-questions-banner a { color: var(--blue); font-weight: 600; }
-
-  .price-summary {
-    background: var(--gray-50); border: 1px solid var(--gray-100);
-    border-radius: 6px; padding: 1.2rem 1.4rem; margin-bottom: 1.2rem;
-  }
-  .price-summary-row {
-    display: flex; justify-content: space-between; font-size: 0.85rem;
-    color: var(--gray-700); padding: 0.3rem 0;
-  }
-  .price-summary-row.total {
-    border-top: 1px solid var(--gray-100); margin-top: 0.4rem; padding-top: 0.7rem;
-    font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--blue);
-  }
-  .toggle-row {
-    display: flex; align-items: center; gap: 0.7rem; margin-bottom: 1.1rem;
-    font-size: 0.9rem; color: var(--gray-700);
-  }
-  .toggle-row input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--blue); cursor: pointer; }
-
-
   .text-center { text-align: center; }
 
   /* ACCESSIBILITY: inline text links need a non-color cue, not just color */
@@ -928,7 +838,6 @@
     <li><a href="https://book.runswiftapp.com/facilities/mvp-training-facility" target="_blank">Facility</a></li>
     <li><a href="#" onclick="showPage('lessons'); return false;">Lessons</a></li>
     <li><a href="#" onclick="showPage('clinics'); return false;">Clinics</a></li>
-    <li><a href="#" onclick="showPage('recruiting'); return false;">Recruiting</a></li>
     <li><a href="#" onclick="showPage('about'); return false;">About Us</a></li>
   </ul>
   <button class="nav-hamburger" onclick="toggleMobile()" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -949,7 +858,6 @@
   <a href="https://book.runswiftapp.com/facilities/mvp-training-facility" target="_blank" onclick="toggleMobile()">Facility</a>
   <a href="#" onclick="showPage('lessons'); toggleMobile(); return false;">Lessons</a>
   <a href="#" onclick="showPage('clinics'); toggleMobile(); return false;">Clinics</a>
-  <a href="#" onclick="showPage('recruiting'); toggleMobile(); return false;">Recruiting</a>
   <a href="#" onclick="showPage('about'); toggleMobile(); return false;">About Us</a>
 </div>
 
@@ -1404,151 +1312,7 @@
 </div>
 
 
-<!-- ══════════════════════════════════════════════════
-     RECRUITING
-══════════════════════════════════════════════════ -->
-<div id="page-recruiting" class="page">
-  <div class="page-hero" style="position:relative;overflow:hidden;">
-    <img src="assets/action3.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.25;z-index:0;">
-    <h1 style="position:relative;z-index:1;">Cam Cook Recruiting Program</h1>
-    <p style="position:relative;z-index:1;">Your step-by-step pathway to college baseball, starting pre-freshman year.</p>
-  </div>
-
-  <section class="section">
-    <div>
-      <div class="section-header"><h2>About the Program</h2></div>
-      <p style="color:var(--gray-700);font-size:0.95rem;margin-bottom:2rem;">The Cam Cook Recruiting Program is a year-by-year roadmap that helps athletes develop early and market themselves effectively when it's time to get in front of college coaches.</p>
-
-      <div class="section-header"><h2>About Cam Cook</h2></div>
-      <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:3rem;margin-bottom:3rem;" class="fade-in cam-bio-grid">
-        <div>
-          <p style="color:var(--gray-700);font-size:0.9rem;line-height:1.7;margin-bottom:1.2rem;">Cam is currently the General Manager of the Nashua Silver Knights in the Futures League. He is entering his 7th season at the helm, and in his time the Knights have won 2 league championships and seen 5 of his players selected in the MLB Draft.</p>
-          <div id="camBioMore" class="cam-bio-more">
-            <p style="color:var(--gray-700);font-size:0.9rem;line-height:1.7;margin-bottom:1.2rem;">Before entering the front office, Cam was the Silver Knights third baseman from 2016 to 2017, both of those championship years. Cam set the single season hits record while capturing the 2017 FCBL batting title.</p>
-            <p style="color:var(--gray-700);font-size:0.9rem;line-height:1.7;">Cam aims to help develop hitters and infielders throughout the off season, while assisting high school level players in the college recruiting process. He is available for individual and group training at the MVP Training Center.</p>
-          </div>
-          <button class="cam-bio-toggle" id="camBioToggleBtn" onclick="toggleCamBio()">Read More</button>
-        </div>
-        <div class="cam-bio-more" id="camBioAwards">
-          <ul style="list-style:none;">
-            <li style="padding:0.5rem 0;font-size:0.88rem;color:var(--gray-700);border-bottom:1px solid var(--gray-100);"><strong style="color:var(--black);">4x</strong> FCBL Champion</li>
-            <li style="padding:0.5rem 0;font-size:0.88rem;color:var(--gray-700);border-bottom:1px solid var(--gray-100);"><strong style="color:var(--black);">2020</strong> FCBL Executive of the Year</li>
-            <li style="padding:0.5rem 0;font-size:0.88rem;color:var(--gray-700);border-bottom:1px solid var(--gray-100);"><strong style="color:var(--black);">2017</strong> FCBL Batting Champion</li>
-            <li style="padding:0.5rem 0;font-size:0.88rem;color:var(--gray-700);border-bottom:1px solid var(--gray-100);">FCBL Single Season Hits Record <strong style="color:var(--black);">(81)</strong></li>
-            <li style="padding:0.5rem 0;font-size:0.88rem;color:var(--gray-700);border-bottom:1px solid var(--gray-100);"><strong style="color:var(--black);">2x</strong> All New England 2B</li>
-            <li style="padding:0.5rem 0;font-size:0.88rem;color:var(--gray-700);border-bottom:1px solid var(--gray-100);"><strong style="color:var(--black);">3x</strong> All Commonwealth Coast Conference 2B</li>
-            <li style="padding:0.5rem 0;font-size:0.88rem;color:var(--gray-700);border-bottom:1px solid var(--gray-100);">Nichols College Single Season Hits Record <strong style="color:var(--black);">(67)</strong></li>
-            <li style="padding:0.5rem 0;font-size:0.88rem;color:var(--gray-700);">Nichols College Career Hits Record <strong style="color:var(--black);">(210)</strong></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="blueprint-box fade-in">
-        <h3>Included Every Year</h3>
-        <div class="blueprint-list">
-          <div class="blueprint-item">
-            <span class="bp-num">01</span>
-            <p><strong>1 Annual Rapsodo Performance Session</strong><br>Establish and track objective data baselines including pitch velocity, exit velocity, spin metrics, and launch angles.</p>
-          </div>
-          <div class="blueprint-item">
-            <span class="bp-num">02</span>
-            <p><strong>1 Dedicated Strategy &amp; Action-Plan Meeting</strong><br>A focused review with Cam to outline development priorities for the upcoming season.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-header" style="margin-left:1.4rem;"><h2>The Year-by-Year Roadmap</h2></div>
-      <div class="roadmap-row fade-in">
-        <div class="roadmap-card">
-          <div class="roadmap-year">Freshman Year</div>
-          <div class="roadmap-focus">Development &amp; Goal Setting</div>
-          <p class="roadmap-details">Laying the foundation, identifying baselines, and making a plan for the upcoming year.</p>
-          <div class="roadmap-price">$399 <span>MVP Players</span>$499 <span>Outside Players</span></div>
-        </div>
-        <div class="roadmap-card">
-          <div class="roadmap-year">Sophomore Year</div>
-          <div class="roadmap-focus">Development &amp; Goal Setting</div>
-          <p class="roadmap-details">Staying on track, physical development check-ins, and adjusting training priorities.</p>
-          <div class="roadmap-price">$399 <span>MVP Players</span>$499 <span>Outside Players</span></div>
-        </div>
-        <div class="roadmap-card">
-          <div class="roadmap-year">Junior Year</div>
-          <div class="roadmap-focus">Active Recruiting &amp; Self-Marketing</div>
-          <p class="roadmap-details">Transitioning from development into a major marketing push. Learn how to market yourself through recruiting videos and social media strategy, and leverage Cam Cook's network of college coaching contacts.</p>
-          <p class="roadmap-comm">Constant, ongoing support throughout the year.</p>
-          <div class="roadmap-price">$599 <span>MVP Players</span>$699 <span>Outside Players</span></div>
-        </div>
-        <div class="roadmap-card">
-          <div class="roadmap-year">Senior Year</div>
-          <div class="roadmap-focus">Closing the Deal</div>
-          <p class="roadmap-details">Executing the final push. Tuning and polishing recruiting messages, handling last-minute college outreach, and securing commitments.</p>
-          <div class="roadmap-price">$699 <span>MVP Players</span>$799 <span>Outside Players</span></div>
-        </div>
-      </div>
-
-      <div class="recruit-questions-banner fade-in">
-        <h3>Have Questions?</h3>
-        <p>For more information or custom inquiries, contact us directly at <a href="mailto:recruiting@mvprospectsnh.com">recruiting@mvprospectsnh.com</a>.</p>
-      </div>
-
-      <div class="section-header" style="justify-content:center;width:100%;"><h2>Register for the Program</h2></div>
-      <div class="contact-form-card fade-in" style="max-width:560px;margin:0 auto;">
-        <h3>Player Registration</h3>
-        <div id="recruitError" class="form-error" role="alert"></div>
-        <div id="recruitSuccess" class="form-success" role="status">Registration received! We will follow up by email with payment details to complete your spot.</div>
-        <div id="recruitForm">
-          <div class="form-row">
-            <div class="form-group"><label for="rFirstName">Player First Name *</label><input type="text" placeholder="First" id="rFirstName" required aria-required="true"></div>
-            <div class="form-group"><label for="rLastName">Player Last Name *</label><input type="text" placeholder="Last" id="rLastName" required aria-required="true"></div>
-          </div>
-          <div class="form-group"><label for="rEmail">Contact Email *</label><input type="email" placeholder="email@example.com" id="rEmail" required aria-required="true"></div>
-          <div class="form-group"><label for="rPhone">Contact Phone *</label><input type="tel" placeholder="(603) 555-0000" id="rPhone" oninput="formatPhoneInput(this)" required aria-required="true"></div>
-          <div class="form-group">
-            <label for="rGradYear">Upcoming School Year *</label>
-            <select id="rGradYear" onchange="updateRecruitPrice()" required aria-required="true">
-              <option value="">Select year</option>
-              <option value="freshman">Freshman</option>
-              <option value="sophomore">Sophomore</option>
-              <option value="junior">Junior</option>
-              <option value="senior">Senior</option>
-            </select>
-          </div>
-          <div class="toggle-row">
-            <input type="checkbox" id="rMvpPlayer" onchange="updateRecruitPrice()">
-            <label for="rMvpPlayer" style="cursor:pointer;">I am a current MVProspects club player</label>
-          </div>
-
-          <div class="price-summary" id="recruitPriceSummary" style="display:none;">
-            <div class="price-summary-row"><span>Program fee</span><span id="rBasePrice">$0.00</span></div>
-            <div class="price-summary-row"><span>Payment processing fee</span><span id="rFeePrice">$0.00</span></div>
-            <div class="price-summary-row total"><span>Total</span><span id="rTotalPrice">$0.00</span></div>
-          </div>
-
-          <div style="display:none;" aria-hidden="true"><input type="text" name="hp" id="hp_recruit" tabindex="-1" autocomplete="off"></div>
-          <button class="btn btn-primary" style="width:100%;" onclick="continueToRecruitPayment()">Continue to Payment</button>
-        </div>
-
-        <div id="recruitPaymentStep" style="display:none;">
-          <div class="price-summary" style="margin-bottom:1.2rem;margin-top:1.4rem;">
-            <div class="price-summary-row"><span>Player</span><span id="paySummaryName"></span></div>
-            <div class="price-summary-row"><span>Program</span><span id="paySummaryTier"></span></div>
-            <div class="price-summary-row total"><span>Amount Due</span><span id="paySummaryTotal">$0.00</span></div>
-          </div>
-
-          <div class="form-group"><label for="rCardName">Name on Card</label><input type="text" placeholder="Full name" id="rCardName" autocomplete="cc-name" required aria-required="true"></div>
-          <div class="form-group"><label for="rCardNumber">Card Number</label><input type="text" inputmode="numeric" placeholder="4242 4242 4242 4242" maxlength="19" id="rCardNumber" oninput="formatCardNumberInput(this)" autocomplete="cc-number" required aria-required="true"></div>
-          <div class="form-row">
-            <div class="form-group"><label for="rCardExpiry">Expiry</label><input type="text" inputmode="numeric" placeholder="MM / YY" maxlength="7" id="rCardExpiry" oninput="formatExpiryInput(this)" autocomplete="cc-exp" required aria-required="true"></div>
-            <div class="form-group"><label for="rCardCvc">CVC</label><input type="text" inputmode="numeric" placeholder="CVC" maxlength="3" id="rCardCvc" oninput="formatCvcInput(this)" autocomplete="cc-csc" required aria-required="true"></div>
-          </div>
-
-          <button class="btn btn-primary" style="width:100%;" onclick="submitRecruitPayment()" id="rPayButton">Pay</button>
-        </div>
-      </div>
-
-    </div>
-  </section>
-</div>
+<!-- REMOVED: RECRUITING page (removed from live site) -->
 
 </main>
 
@@ -1848,156 +1612,6 @@
       fallback.style.display = 'block';
     }
   }, 5000);
-
-
-  /* CAM COOK BIO: mobile read more toggle */
-  function toggleCamBio() {
-    var bioMore = document.getElementById('camBioMore');
-    var awards = document.getElementById('camBioAwards');
-    var btn = document.getElementById('camBioToggleBtn');
-    var isOpen = bioMore.classList.toggle('open');
-    awards.classList.toggle('open', isOpen);
-    btn.textContent = isOpen ? 'Show Less' : 'Read More';
-  }
-
-  /* INPUT FORMATTING HELPERS */
-  function formatPhoneInput(el) {
-    var digits = el.value.replace(/\D/g, '').slice(0, 10);
-    var out = digits;
-    if (digits.length > 6) {
-      out = '(' + digits.slice(0, 3) + ') ' + digits.slice(3, 6) + '-' + digits.slice(6);
-    } else if (digits.length > 3) {
-      out = '(' + digits.slice(0, 3) + ') ' + digits.slice(3);
-    } else if (digits.length > 0) {
-      out = '(' + digits;
-    }
-    el.value = out;
-  }
-
-  function formatCardNumberInput(el) {
-    var digits = el.value.replace(/\D/g, '').slice(0, 16);
-    var groups = digits.match(/.{1,4}/g) || [];
-    el.value = groups.join(' ');
-  }
-
-  function formatExpiryInput(el) {
-    var digits = el.value.replace(/\D/g, '').slice(0, 4);
-    if (digits.length >= 1) {
-      var first = digits.charAt(0);
-      if (first !== '0' && first !== '1') {
-        digits = '0' + digits;
-        digits = digits.slice(0, 4);
-      }
-    }
-    if (digits.length >= 2) {
-      var mm = parseInt(digits.slice(0, 2), 10);
-      if (mm > 12) digits = '12' + digits.slice(2);
-      if (mm === 0) digits = '01' + digits.slice(2);
-    }
-    el.value = digits.length > 2 ? digits.slice(0, 2) + ' / ' + digits.slice(2) : digits;
-  }
-
-  function formatCvcInput(el) {
-    el.value = el.value.replace(/\D/g, '').slice(0, 3);
-  }
-
-  /* RECRUITING PROGRAM: pricing + registration */
-  var RECRUIT_PRICES = {
-    freshman:  { mvp: 399, outside: 499 },
-    sophomore: { mvp: 399, outside: 499 },
-    junior:    { mvp: 599, outside: 699 },
-    senior:    { mvp: 699, outside: 799 }
-  };
-
-  function calcRecruitTotal(base) {
-    var fee = base * 0.039 + 0.30;
-    var total = base + fee;
-    return { fee: fee, total: total };
-  }
-
-  function updateRecruitPrice() {
-    var tier = document.getElementById('rGradYear').value;
-    var isMvp = document.getElementById('rMvpPlayer').checked;
-    var summary = document.getElementById('recruitPriceSummary');
-
-    if (!tier) { summary.style.display = 'none'; return; }
-
-    var base = isMvp ? RECRUIT_PRICES[tier].mvp : RECRUIT_PRICES[tier].outside;
-    var calc = calcRecruitTotal(base);
-
-    document.getElementById('rBasePrice').textContent = '$' + base.toFixed(2);
-    document.getElementById('rFeePrice').textContent = '$' + calc.fee.toFixed(2);
-    document.getElementById('rTotalPrice').textContent = '$' + calc.total.toFixed(2);
-    summary.style.display = 'block';
-  }
-
-  function continueToRecruitPayment() {
-    if (document.getElementById('hp_recruit').value) return;
-
-    var first = document.getElementById('rFirstName').value.trim();
-    var last = document.getElementById('rLastName').value.trim();
-    var email = document.getElementById('rEmail').value.trim();
-    var phone = document.getElementById('rPhone').value.trim();
-    var tier = document.getElementById('rGradYear').value;
-    var isMvp = document.getElementById('rMvpPlayer').checked;
-
-    if (!first || !last || !email || !phone || !tier) {
-      showErr('recruitError', 'Please fill in all required fields.');
-      return;
-    }
-    document.getElementById('recruitError').style.display = 'none';
-
-    var base = isMvp ? RECRUIT_PRICES[tier].mvp : RECRUIT_PRICES[tier].outside;
-    var calc = calcRecruitTotal(base);
-    var tierLabel = tier.charAt(0).toUpperCase() + tier.slice(1);
-
-    document.getElementById('paySummaryName').textContent = first + ' ' + last;
-    document.getElementById('paySummaryTier').textContent = tierLabel + ' Year (' + (isMvp ? 'MVP Player' : 'Outside Player') + ')';
-    document.getElementById('paySummaryTotal').textContent = '$' + calc.total.toFixed(2);
-    document.getElementById('rPayButton').textContent = 'Pay $' + calc.total.toFixed(2);
-
-    document.getElementById('recruitPaymentStep').style.display = 'block';
-    document.getElementById('recruitPaymentStep').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
-  function submitRecruitPayment() {
-    var cardName = document.getElementById('rCardName').value.trim();
-    var cardNumber = document.getElementById('rCardNumber').value.trim();
-    var cardExpiry = document.getElementById('rCardExpiry').value.trim();
-    var cardCvc = document.getElementById('rCardCvc').value.trim();
-
-    if (!cardName || !cardNumber || !cardExpiry || !cardCvc) {
-      showErr('recruitError', 'Please fill in all card details to continue.');
-      return;
-    }
-    document.getElementById('recruitError').style.display = 'none';
-
-    var first = document.getElementById('rFirstName').value.trim();
-    var last = document.getElementById('rLastName').value.trim();
-    var email = document.getElementById('rEmail').value.trim();
-    var phone = document.getElementById('rPhone').value.trim();
-    var tier = document.getElementById('rGradYear').value;
-    var isMvp = document.getElementById('rMvpPlayer').checked;
-    var base = isMvp ? RECRUIT_PRICES[tier].mvp : RECRUIT_PRICES[tier].outside;
-    var calc = calcRecruitTotal(base);
-    var tierLabel = tier.charAt(0).toUpperCase() + tier.slice(1);
-
-    var body = 'Player: ' + first + ' ' + last +
-      '\nContact Email: ' + email +
-      '\nContact Phone: ' + phone +
-      '\nUpcoming School Year: ' + tierLabel +
-      '\nMVProspects Club Player: ' + (isMvp ? 'Yes' : 'No') +
-      '\nBase Price: $' + base.toFixed(2) +
-      '\nProcessing Fee: $' + calc.fee.toFixed(2) +
-      '\nTotal Charged: $' + calc.total.toFixed(2) +
-      '\n[DEMO MODE: no real payment was processed]';
-
-    document.getElementById('recruitSuccess').textContent =
-      'Demo payment simulated! In production, Stripe would process a real charge of $' + calc.total.toFixed(2) + ' here.';
-    document.getElementById('recruitForm').style.display = 'none';
-
-    sendEmail('recruiting@mvprospectsnh.com', 'Recruiting Program Registration: ' + first + ' ' + last, body, 'recruitSuccess', 'recruitPaymentStep');
-  }
 
   /* Init */
   buildTeamsDropdown();
