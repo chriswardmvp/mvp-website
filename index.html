@@ -27,7 +27,7 @@
     --white:      #ffffff;
     --gray-50:    #F7F8FA;
     --gray-100:   #ECEEF2;
-    --gray-400:   #9AA0AD;
+    --gray-400:   #6B7280;
     --gray-700:   #3D4452;
     --nav-h:      72px;
   }
@@ -77,7 +77,7 @@
     transition: color 0.15s; white-space: nowrap;
   }
   .nav-links a:hover, .nav-links button:hover { color: var(--white); }
-  .nav-links li:hover .nav-dropdown { display: grid; }
+  .nav-links li:hover .nav-dropdown, .nav-links li:focus-within .nav-dropdown { display: grid; }
   .nav-dropdown {
     display: none;
     position: absolute; top: calc(var(--nav-h) - 3px); left: 0;
@@ -514,9 +514,9 @@
   .footer-bottom {
     border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.2rem;
     display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;
-    font-size: 0.75rem; color: rgba(255,255,255,0.3);
+    font-size: 0.75rem; color: rgba(255,255,255,0.6);
   }
-  .footer-bottom a { color: rgba(255,255,255,0.4); }
+  .footer-bottom a { color: rgba(255,255,255,0.65); text-decoration: underline; text-underline-offset: 2px; }
   .footer-bottom a:hover { color: var(--white); }
 
   @media (max-width: 960px) { .nav-links { display: none; } .nav-hamburger { display: flex; } }
@@ -890,13 +890,29 @@
 
 
   .text-center { text-align: center; }
+
+  /* ACCESSIBILITY: inline text links need a non-color cue, not just color */
+  p a { text-decoration: underline; text-underline-offset: 2px; }
+
+  /* ACCESSIBILITY: skip link */
+  .skip-link {
+    position: absolute; left: 1rem; top: -60px;
+    background: var(--blue); color: var(--white) !important;
+    padding: 0.7rem 1.2rem; border-radius: 4px;
+    font-family: 'Oswald', sans-serif; font-size: 0.85rem; font-weight: 600;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    z-index: 3000; transition: top 0.15s ease;
+  }
+  .skip-link:focus { top: 1rem; }
 </style>
 </head>
 <body>
 
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <!-- NAV -->
-<nav class="nav">
-  <div class="nav-logo" onclick="showPage('home')" style="cursor:pointer;">
+<nav class="nav" aria-label="Primary">
+  <div class="nav-logo" onclick="showPage('home')" role="link" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showPage('home');}" style="cursor:pointer;">
     <img src="assets/mvplogo.avif"
          alt="MV Prospects Baseball"
          onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
@@ -905,7 +921,7 @@
   <ul class="nav-links">
     <li><a href="#" onclick="showPage('home'); return false;">Home</a></li>
     <li>
-      <button onclick="showPage('teams')">Teams ▾</button>
+      <button onclick="showPage('teams')" aria-haspopup="true" aria-controls="teamsDropdown">Teams ▾</button>
       <div class="nav-dropdown" id="teamsDropdown"></div>
     </li>
     <li><a href="#" onclick="showPage('tryouts'); return false;">Tryouts</a></li>
@@ -915,16 +931,16 @@
     <li><a href="#" onclick="showPage('recruiting'); return false;">Recruiting</a></li>
     <li><a href="#" onclick="showPage('about'); return false;">About Us</a></li>
   </ul>
-  <button class="nav-hamburger" onclick="toggleMobile()" aria-label="Menu">
+  <button class="nav-hamburger" onclick="toggleMobile()" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
   <a href="#" onclick="showPage('home'); toggleMobile(); return false;">Home</a>
-  <button class="mobile-teams-toggle" onclick="toggleMobileTeams()" style="display:flex;padding:0.85rem 1.5rem;width:100%;background:none;border:none;border-bottom:1px solid rgba(255,255,255,0.08);">
+  <button class="mobile-teams-toggle" onclick="toggleMobileTeams()" aria-expanded="false" aria-controls="mobileTeamsSubmenu" style="display:flex;padding:0.85rem 1.5rem;width:100%;background:none;border:none;border-bottom:1px solid rgba(255,255,255,0.08);">
     <span>Teams</span>
-    <span class="mobile-chevron" id="mobileChevron">&#9660;</span>
+    <span class="mobile-chevron" id="mobileChevron" aria-hidden="true">&#9660;</span>
   </button>
   <div class="mobile-submenu" id="mobileTeamsSubmenu">
     <a href="#" onclick="showPage('teams'); toggleMobile(); return false;" style="font-weight:600;color:rgba(255,255,255,0.9);">All Teams</a>
@@ -937,6 +953,8 @@
   <a href="#" onclick="showPage('about'); toggleMobile(); return false;">About Us</a>
 </div>
 
+<main id="main-content" tabindex="-1">
+
 <!-- ══════════════════════════════════════════════════
      HOME
 ══════════════════════════════════════════════════ -->
@@ -945,7 +963,7 @@
   <section class="hero">
     <img src="assets/team1.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 70%;">
     <div class="hero-diamond"></div>
-    <svg class="hero-stitches" viewBox="0 0 800 560" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;opacity:0.06;">
+    <svg class="hero-stitches" aria-hidden="true" viewBox="0 0 800 560" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;opacity:0.06;">
       <path d="M650 0 Q750 150 800 280" stroke="white" stroke-width="2" fill="none" stroke-dasharray="8 6"/>
       <path d="M680 0 Q780 150 800 300" stroke="white" stroke-width="1.5" fill="none" stroke-dasharray="8 6"/>
       <circle cx="700" cy="80" r="60" stroke="white" stroke-width="1" fill="none" stroke-dasharray="4 4"/>
@@ -1009,7 +1027,7 @@
         <div id="fb-root"></div>
         <div id="fbPageContainer"></div>
         <div class="fb-embed-fallback" id="fbFallback" style="display:none;">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" style="margin:0 auto 1rem;"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" aria-hidden="true" style="margin:0 auto 1rem;"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
           <p style="margin-bottom:1rem;">Facebook feed not loading? Check us out directly.</p>
           <a href="https://www.facebook.com/MerrimackValleyProspects/" target="_blank" class="btn btn-primary">Open Facebook Page</a>
         </div>
@@ -1057,14 +1075,14 @@
       </div>
       <div class="contact-form-card fade-in">
         <h3>Send a Message</h3>
-        <div id="homeContactError" class="form-error"></div>
-        <div id="homeContactSuccess" class="form-success">Message sent! We'll be in touch soon.</div>
+        <div id="homeContactError" class="form-error" role="alert"></div>
+        <div id="homeContactSuccess" class="form-success" role="status">Message sent! We'll be in touch soon.</div>
         <div id="homeContactForm">
           <p style="font-size:0.75rem;color:var(--gray-400);margin-bottom:1rem;">Please complete this form as a parent or guardian on behalf of your player.</p>
-          <div class="form-group"><label>Name *</label><input type="text" placeholder="Your name" id="hName"></div>
-          <div class="form-group"><label>Email *</label><input type="email" placeholder="email@example.com" id="hEmail"></div>
+          <div class="form-group"><label for="hName">Name *</label><input type="text" placeholder="Your name" id="hName" required aria-required="true"></div>
+          <div class="form-group"><label for="hEmail">Email *</label><input type="email" placeholder="email@example.com" id="hEmail" required aria-required="true"></div>
           <div class="form-group">
-            <label>Subject</label>
+            <label for="hSubject">Subject</label>
             <select id="hSubject">
               <option value="">Select a topic</option>
               <option>Tryouts</option>
@@ -1074,7 +1092,7 @@
               <option>General Question</option>
             </select>
           </div>
-          <div class="form-group"><label>Message *</label><textarea placeholder="Your message..." id="hMessage"></textarea></div>
+          <div class="form-group"><label for="hMessage">Message *</label><textarea placeholder="Your message..." id="hMessage" required aria-required="true"></textarea></div>
           <div style="display:none;" aria-hidden="true"><input type="text" name="hp" id="hp_home" tabindex="-1" autocomplete="off"></div>
           <button class="btn btn-primary" style="width:100%;" onclick="submitHomeContact()">Send Message</button>
         </div>
@@ -1141,13 +1159,13 @@
       <p style="color:var(--gray-700);font-size:0.9rem;margin-bottom:1.5rem;">Send us a message and we will get back to you as soon as possible.</p>
       <div class="contact-form-card fade-in">
         <h3>Contact Us</h3>
-        <div id="tryoutContactError" class="form-error"></div>
-        <div id="tryoutContactSuccess" class="form-success">Message sent! We'll be in touch soon.</div>
+        <div id="tryoutContactError" class="form-error" role="alert"></div>
+        <div id="tryoutContactSuccess" class="form-success" role="status">Message sent! We'll be in touch soon.</div>
         <div id="tryoutContactForm">
           <p style="font-size:0.75rem;color:var(--gray-400);margin-bottom:1rem;">Please complete this form as a parent or guardian on behalf of your player.</p>
-          <div class="form-group"><label>Name *</label><input type="text" placeholder="Your name" id="tName"></div>
-          <div class="form-group"><label>Email *</label><input type="email" placeholder="email@example.com" id="tEmail"></div>
-          <div class="form-group"><label>Message *</label><textarea placeholder="Your question..." id="tMessage"></textarea></div>
+          <div class="form-group"><label for="tName">Name *</label><input type="text" placeholder="Your name" id="tName" required aria-required="true"></div>
+          <div class="form-group"><label for="tEmail">Email *</label><input type="email" placeholder="email@example.com" id="tEmail" required aria-required="true"></div>
+          <div class="form-group"><label for="tMessage">Message *</label><textarea placeholder="Your question..." id="tMessage" required aria-required="true"></textarea></div>
           <div style="display:none;" aria-hidden="true"><input type="text" name="hp" id="hp_tryout" tabindex="-1" autocomplete="off"></div>
           <button class="btn btn-primary" onclick="submitTryoutContact()">Send</button>
         </div>
@@ -1307,14 +1325,14 @@
       </div>
       <div class="contact-form-card fade-in">
         <h3>Send a Message</h3>
-        <div id="aboutContactError" class="form-error"></div>
-        <div id="aboutContactSuccess" class="form-success">Message sent! We'll be in touch soon.</div>
+        <div id="aboutContactError" class="form-error" role="alert"></div>
+        <div id="aboutContactSuccess" class="form-success" role="status">Message sent! We'll be in touch soon.</div>
         <div id="aboutContactForm">
           <p style="font-size:0.75rem;color:var(--gray-400);margin-bottom:1rem;">Please complete this form as a parent or guardian on behalf of your player.</p>
-          <div class="form-group"><label>Name *</label><input type="text" placeholder="Your name" id="aName"></div>
-          <div class="form-group"><label>Email *</label><input type="email" placeholder="email@example.com" id="aEmail"></div>
+          <div class="form-group"><label for="aName">Name *</label><input type="text" placeholder="Your name" id="aName" required aria-required="true"></div>
+          <div class="form-group"><label for="aEmail">Email *</label><input type="email" placeholder="email@example.com" id="aEmail" required aria-required="true"></div>
           <div class="form-group">
-            <label>Subject</label>
+            <label for="aSubject">Subject</label>
             <select id="aSubject">
               <option value="">Select a topic</option>
               <option>Tryouts</option>
@@ -1324,7 +1342,7 @@
               <option>General Question</option>
             </select>
           </div>
-          <div class="form-group"><label>Message *</label><textarea placeholder="Your message..." id="aMessage"></textarea></div>
+          <div class="form-group"><label for="aMessage">Message *</label><textarea placeholder="Your message..." id="aMessage" required aria-required="true"></textarea></div>
           <div style="display:none;" aria-hidden="true"><input type="text" name="hp" id="hp_about" tabindex="-1" autocomplete="off"></div>
           <button class="btn btn-primary" style="width:100%;" onclick="submitAboutContact()">Send Message</button>
         </div>
@@ -1340,7 +1358,7 @@
     <p>Last updated: July 2026</p>
   </div>
   <section class="section">
-    <div style="max-width:760px;">
+    <div>
       <p style="color:var(--gray-700);font-size:0.95rem;margin-bottom:2rem;">MV Prospects Baseball / Merrimack Valley Prospects LLC ("MVP Baseball," "we," "us") operates this website. This policy explains what personal information we collect, why we collect it, and how it is used.</p>
 
       <h3 style="margin-bottom:0.6rem;margin-top:1.5rem;">1. Who We Are</h3>
@@ -1367,7 +1385,19 @@
       <h3 style="margin-bottom:0.6rem;margin-top:1.5rem;">8. Cookies</h3>
       <p style="color:var(--gray-700);font-size:0.9rem;margin-bottom:1.5rem;">This site itself does not set cookies. The Facebook embed may set third-party cookies. You can manage or block cookies through your browser settings.</p>
 
-      <h3 style="margin-bottom:0.6rem;margin-top:1.5rem;">9. Contact</h3>
+      <h3 style="margin-bottom:0.6rem;margin-top:1.5rem;">9. Accessibility</h3>
+      <p style="color:var(--gray-700);font-size:0.9rem;margin-bottom:1rem;">We want this site to be usable by everyone, including people who use screen readers, keyboard-only navigation, or other assistive technology. We aim to conform to the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA. Features of this site include:</p>
+      <ul style="list-style:none;margin-bottom:1.5rem;">
+        <li style="padding:0.3rem 0;font-size:0.9rem;color:var(--gray-700);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--blue);font-weight:700;flex-shrink:0;">&rarr;</span> A "Skip to main content" link and page landmarks for screen reader and keyboard navigation.</li>
+        <li style="padding:0.3rem 0;font-size:0.9rem;color:var(--gray-700);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--blue);font-weight:700;flex-shrink:0;">&rarr;</span> Keyboard-accessible menus, forms, and buttons, with visible focus indicators.</li>
+        <li style="padding:0.3rem 0;font-size:0.9rem;color:var(--gray-700);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--blue);font-weight:700;flex-shrink:0;">&rarr;</span> Form fields with associated labels, required-field indicators, and error/success messages announced to assistive technology.</li>
+        <li style="padding:0.3rem 0;font-size:0.9rem;color:var(--gray-700);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--blue);font-weight:700;flex-shrink:0;">&rarr;</span> Descriptive alternative text on informational images; purely decorative images and icons are hidden from screen readers.</li>
+        <li style="padding:0.3rem 0;font-size:0.9rem;color:var(--gray-700);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--blue);font-weight:700;flex-shrink:0;">&rarr;</span> Text and background color combinations that meet WCAG AA contrast minimums.</li>
+        <li style="padding:0.3rem 0;font-size:0.9rem;color:var(--gray-700);display:flex;align-items:flex-start;gap:0.6rem;"><span style="color:var(--blue);font-weight:700;flex-shrink:0;">&rarr;</span> Reduced motion for visitors who have that preference set in their operating system or browser.</li>
+      </ul>
+      <p style="color:var(--gray-700);font-size:0.9rem;margin-bottom:1.5rem;">Accessibility is an ongoing effort, and some parts of the site may not yet be fully accessible, including content from third-party embeds (such as the Facebook feed) and external booking platforms (Perfect Game, RunSwift/Swift) that we do not control. If you encounter a barrier using this site, or need information in an alternate format, please contact us at <a href="mailto:info@mvpbaseballnh.com" style="color:var(--blue);">info@mvpbaseballnh.com</a>. Please describe the issue and the page where you encountered it, and we will work to address it as quickly as possible.</p>
+
+      <h3 style="margin-bottom:0.6rem;margin-top:1.5rem;">10. Contact</h3>
       <p style="color:var(--gray-700);font-size:0.9rem;">Questions? Email <a href="mailto:info@mvpbaseballnh.com" style="color:var(--blue);">info@mvpbaseballnh.com</a> or write to: Merrimack Valley Prospects LLC, 472 Amherst Street, Nashua, NH 03063.</p>
     </div>
   </section>
@@ -1464,18 +1494,18 @@
       <div class="section-header" style="justify-content:center;width:100%;"><h2>Register for the Program</h2></div>
       <div class="contact-form-card fade-in" style="max-width:560px;margin:0 auto;">
         <h3>Player Registration</h3>
-        <div id="recruitError" class="form-error"></div>
-        <div id="recruitSuccess" class="form-success">Registration received! We will follow up by email with payment details to complete your spot.</div>
+        <div id="recruitError" class="form-error" role="alert"></div>
+        <div id="recruitSuccess" class="form-success" role="status">Registration received! We will follow up by email with payment details to complete your spot.</div>
         <div id="recruitForm">
           <div class="form-row">
-            <div class="form-group"><label>Player First Name *</label><input type="text" placeholder="First" id="rFirstName"></div>
-            <div class="form-group"><label>Player Last Name *</label><input type="text" placeholder="Last" id="rLastName"></div>
+            <div class="form-group"><label for="rFirstName">Player First Name *</label><input type="text" placeholder="First" id="rFirstName" required aria-required="true"></div>
+            <div class="form-group"><label for="rLastName">Player Last Name *</label><input type="text" placeholder="Last" id="rLastName" required aria-required="true"></div>
           </div>
-          <div class="form-group"><label>Contact Email *</label><input type="email" placeholder="email@example.com" id="rEmail"></div>
-          <div class="form-group"><label>Contact Phone *</label><input type="tel" placeholder="(603) 555-0000" id="rPhone" oninput="formatPhoneInput(this)"></div>
+          <div class="form-group"><label for="rEmail">Contact Email *</label><input type="email" placeholder="email@example.com" id="rEmail" required aria-required="true"></div>
+          <div class="form-group"><label for="rPhone">Contact Phone *</label><input type="tel" placeholder="(603) 555-0000" id="rPhone" oninput="formatPhoneInput(this)" required aria-required="true"></div>
           <div class="form-group">
-            <label>Upcoming School Year *</label>
-            <select id="rGradYear" onchange="updateRecruitPrice()">
+            <label for="rGradYear">Upcoming School Year *</label>
+            <select id="rGradYear" onchange="updateRecruitPrice()" required aria-required="true">
               <option value="">Select year</option>
               <option value="freshman">Freshman</option>
               <option value="sophomore">Sophomore</option>
@@ -1505,11 +1535,11 @@
             <div class="price-summary-row total"><span>Amount Due</span><span id="paySummaryTotal">$0.00</span></div>
           </div>
 
-          <div class="form-group"><label>Name on Card</label><input type="text" placeholder="Full name" id="rCardName"></div>
-          <div class="form-group"><label>Card Number</label><input type="text" inputmode="numeric" placeholder="4242 4242 4242 4242" maxlength="19" id="rCardNumber" oninput="formatCardNumberInput(this)"></div>
+          <div class="form-group"><label for="rCardName">Name on Card</label><input type="text" placeholder="Full name" id="rCardName" autocomplete="cc-name" required aria-required="true"></div>
+          <div class="form-group"><label for="rCardNumber">Card Number</label><input type="text" inputmode="numeric" placeholder="4242 4242 4242 4242" maxlength="19" id="rCardNumber" oninput="formatCardNumberInput(this)" autocomplete="cc-number" required aria-required="true"></div>
           <div class="form-row">
-            <div class="form-group"><label>Expiry</label><input type="text" inputmode="numeric" placeholder="MM / YY" maxlength="7" id="rCardExpiry" oninput="formatExpiryInput(this)"></div>
-            <div class="form-group"><label>CVC</label><input type="text" inputmode="numeric" placeholder="CVC" maxlength="3" id="rCardCvc" oninput="formatCvcInput(this)"></div>
+            <div class="form-group"><label for="rCardExpiry">Expiry</label><input type="text" inputmode="numeric" placeholder="MM / YY" maxlength="7" id="rCardExpiry" oninput="formatExpiryInput(this)" autocomplete="cc-exp" required aria-required="true"></div>
+            <div class="form-group"><label for="rCardCvc">CVC</label><input type="text" inputmode="numeric" placeholder="CVC" maxlength="3" id="rCardCvc" oninput="formatCvcInput(this)" autocomplete="cc-csc" required aria-required="true"></div>
           </div>
 
           <button class="btn btn-primary" style="width:100%;" onclick="submitRecruitPayment()" id="rPayButton">Pay</button>
@@ -1519,6 +1549,8 @@
     </div>
   </section>
 </div>
+
+</main>
 
 <!-- FOOTER -->
 <footer class="footer">
@@ -1554,7 +1586,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <span>&copy; 2026 MV Prospects Baseball &middot; Merrimack Valley Prospects LLC &middot; <a href="#" onclick="showPage('privacy'); return false;" style="color:rgba(255,255,255,0.4);">Privacy Policy</a></span>
+    <span>&copy; 2026 MV Prospects Baseball &middot; Merrimack Valley Prospects LLC &middot; <a href="#" onclick="showPage('privacy'); return false;">Privacy Policy</a></span>
     <span>Site by <a href="https://baselinestudio.org" target="_blank">Baseline Studio</a></span>
   </div>
 </footer>
@@ -1608,12 +1640,19 @@
   function showPage(id) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     const pg = document.getElementById('page-' + id);
-    if (pg) { pg.classList.add('active'); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    if (pg) {
+      pg.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      const main = document.getElementById('main-content');
+      if (main) main.focus({ preventScroll: true });
+    }
     if (id === 'teams') buildTeamsGrid();
   }
 
   function toggleMobile() {
-    document.getElementById('mobileMenu').classList.toggle('open');
+    var isOpen = document.getElementById('mobileMenu').classList.toggle('open');
+    var btn = document.querySelector('.nav-hamburger');
+    if (btn) btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   }
 
   /* FORMS */
@@ -1758,8 +1797,9 @@
     buildMobileTeamsSubmenu();
     var sub = document.getElementById('mobileTeamsSubmenu');
     var chev = document.getElementById('mobileChevron');
-    sub.classList.toggle('open');
+    var isOpen = sub.classList.toggle('open');
     chev.classList.toggle('open');
+    document.querySelector('.mobile-teams-toggle').setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   }
 
   /* MOBILE HERO BG IMAGES */
@@ -1966,7 +2006,7 @@
 </script>
 
 <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
-  <svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg>
 </button>
 
 <div id="cookieBanner" style="display:none;" class="cookie-banner">
