@@ -380,10 +380,15 @@
     font-family: 'Oswald', sans-serif; font-size: 0.75rem; font-weight: 600;
     padding: 0.25rem 0.6rem; border-radius: 3px; white-space: nowrap; flex-shrink: 0;
   }
+  .home-contact-grid, .about-contact-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+    width: 100%;
+  }
   .contact-form-card {
     background: var(--white); border: 1px solid var(--gray-100);
     border-radius: 8px; padding: 2rem;
     box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    width: 100%; box-sizing: border-box;
   }
   .contact-form-card h3 {
     font-size: 1.2rem; margin-bottom: 1.5rem;
@@ -965,7 +970,7 @@
 
   <!-- Contact form -->
   <section class="section">
-    <div class="home-contact-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;flex-wrap:wrap;">
+    <div class="home-contact-grid">
       <div>
         <div class="section-header"><h2>Get in Touch</h2></div>
         <p style="color:var(--gray-700);font-size:0.95rem;margin-bottom:1.2rem;">Questions about the program, tryouts, lessons, or facility? Send us a message and we'll get back to you.</p>
@@ -1180,7 +1185,7 @@
 
   <!-- Contact form on about page -->
   <section class="section section-alt">
-    <div class="about-contact-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;">
+    <div class="about-contact-grid">
       <div>
         <div class="section-header"><h2>Get in Touch</h2></div>
         <p style="color:var(--gray-700);font-size:0.95rem;margin-bottom:1.2rem;">Questions about the program, tryouts, lessons, or facility? Send us a message and we'll get back to you.</p>
