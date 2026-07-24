@@ -169,39 +169,6 @@
     font-family: 'Oswald', sans-serif; letter-spacing: 0.05em; text-transform: uppercase;
   }
 
-  /* FORMS */
-  .form-group { margin-bottom: 1.1rem; }
-  .form-group label {
-    display: block; font-size: 0.8rem; font-weight: 500;
-    letter-spacing: 0.05em; text-transform: uppercase;
-    color: var(--gray-700); margin-bottom: 0.4rem;
-  }
-  .form-group input, .form-group select, .form-group textarea {
-    width: 100%; padding: 0.65rem 0.9rem;
-    border: 1.5px solid var(--gray-100); border-radius: 4px;
-    font-family: 'Inter', sans-serif; font-size: 0.9rem;
-    color: var(--black); background: var(--white);
-    transition: border-color 0.15s; outline: none;
-  }
-  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--blue); }
-  .form-group textarea { resize: vertical; min-height: 100px; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .form-error {
-    display:none; background:#fdecea; border:1px solid #f5c6cb;
-    border-radius:4px; padding:0.6rem 0.9rem;
-    color:#c0392b; font-size:0.85rem; margin-bottom:0.8rem;
-    animation: fadeInMsg 0.3s var(--ease-out);
-  }
-  .form-success {
-    display: none; background: #e8f5e9; border: 1px solid #a5d6a7;
-    border-radius: 4px; padding: 1rem; text-align: center;
-    color: #2e7d32; font-size: 0.9rem; margin-top: 0.8rem;
-    animation: fadeInMsg 0.35s var(--ease-out);
-  }
-  @keyframes fadeInMsg {
-    from { opacity: 0; transform: translateY(6px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
 
   /* SECTIONS */
   .section { padding: 5rem clamp(1.5rem, 6vw, 6rem); }
@@ -740,12 +707,6 @@
   .stagger-3 { transition-delay: 0.2s !important; }
   .stagger-4 { transition-delay: 0.28s !important; }
 
-  /* Form input focus glow */
-  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-    border-color: var(--blue);
-    box-shadow: 0 0 0 3px rgba(27,63,160,0.12);
-  }
-
   /* Team card hover: accent bar, no layout jump */
   .team-card { transition: background 0.18s, box-shadow 0.18s, transform 0.18s; }
   .team-card:hover { box-shadow: inset 3px 0 0 var(--blue); transform: translateX(2px); }
@@ -880,7 +841,7 @@
     <div class="hero-content">
       <h1>Developing the Next Generation of Champions, On and Off the Field</h1>
       <div class="hero-actions">
-        <a href="#" class="btn btn-primary" onclick="showPage('about'); setTimeout(function(){var el=document.getElementById('aboutContactForm'); if(el) el.scrollIntoView({behavior:'smooth'});},300); return false;">Contact Us</a>
+        <a href="https://mvprospectsnh.byga.net/f/lwzmftkkul" target="_blank" class="btn btn-primary">Contact Us</a>
       </div>
     </div>
   </section>
@@ -982,28 +943,10 @@
         <p style="color:var(--gray-700);font-size:0.95rem;margin-bottom:1.5rem;">You can also email us directly at <a href="mailto:info@mvpbaseballnh.com" style="color:var(--blue);">info@mvpbaseballnh.com</a>.</p>
       </div>
       <div class="contact-form-card fade-in">
-        <h3>Send a Message</h3>
-        <div id="homeContactError" class="form-error" role="alert"></div>
-        <div id="homeContactSuccess" class="form-success" role="status">Message sent! We'll be in touch soon.</div>
-        <div id="homeContactForm">
-          <p style="font-size:0.75rem;color:var(--gray-400);margin-bottom:1rem;">Please complete this form as a parent or guardian on behalf of your player.</p>
-          <div class="form-group"><label for="hName">Name *</label><input type="text" placeholder="Your name" id="hName" required aria-required="true"></div>
-          <div class="form-group"><label for="hEmail">Email *</label><input type="email" placeholder="email@example.com" id="hEmail" required aria-required="true"></div>
-          <div class="form-group">
-            <label for="hSubject">Subject</label>
-            <select id="hSubject">
-              <option value="">Select a topic</option>
-              <option>Tryouts</option>
-              <option>Private Lessons</option>
-              <option>Clinics</option>
-              <option>Facility Rental</option>
-              <option>General Question</option>
-            </select>
-          </div>
-          <div class="form-group"><label for="hMessage">Message *</label><textarea placeholder="Your message..." id="hMessage" required aria-required="true"></textarea></div>
-          <div style="display:none;" aria-hidden="true"><input type="text" name="hp" id="hp_home" tabindex="-1" autocomplete="off"></div>
-          <button class="btn btn-primary" style="width:100%;" onclick="submitHomeContact()">Send Message</button>
-        </div>
+        <h3>Contact Options</h3>
+        <p style="color:var(--gray-700);font-size:0.9rem;margin-bottom:1.5rem;">Pick the option below that fits, and it'll take you straight to the right form.</p>
+        <a href="https://mvprospectsnh.byga.net/f/lwzmftkkul" target="_blank" class="btn btn-primary" style="width:100%;text-align:center;display:block;margin-bottom:0.9rem;">Contact Us</a>
+        <a href="https://mvprospectsnh.byga.net/f/oagjrgxjys" target="_blank" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Ask About Private Lessons</a>
       </div>
     </div>
   </section>
@@ -1034,7 +977,7 @@
     <p style="position:relative;z-index:1;">MV Prospects travel baseball program. Tryouts are typically held in July for the upcoming spring season.</p>
   </div>
   <section class="section">
-    <div style="max-width:900px;">
+    <div>
       <div class="section-header"><h2>MV Prospects Travel Baseball Program &ndash; Tryouts</h2></div>
       <p style="color:var(--gray-700);font-size:0.95rem;margin-bottom:1.5rem;">The MV Prospects are built for dedicated athletes who want to compete at the highest level while developing their skills in a positive, team-focused environment. Tryouts are typically held in July for the upcoming spring season, giving players plenty of time to prepare and train before games begin.</p>
 
@@ -1067,16 +1010,8 @@
       <p style="color:var(--gray-700);font-size:0.9rem;margin-bottom:1.5rem;">Send us a message and we will get back to you as soon as possible.</p>
       <div class="contact-form-card fade-in">
         <h3>Contact Us</h3>
-        <div id="tryoutContactError" class="form-error" role="alert"></div>
-        <div id="tryoutContactSuccess" class="form-success" role="status">Message sent! We'll be in touch soon.</div>
-        <div id="tryoutContactForm">
-          <p style="font-size:0.75rem;color:var(--gray-400);margin-bottom:1rem;">Please complete this form as a parent or guardian on behalf of your player.</p>
-          <div class="form-group"><label for="tName">Name *</label><input type="text" placeholder="Your name" id="tName" required aria-required="true"></div>
-          <div class="form-group"><label for="tEmail">Email *</label><input type="email" placeholder="email@example.com" id="tEmail" required aria-required="true"></div>
-          <div class="form-group"><label for="tMessage">Message *</label><textarea placeholder="Your question..." id="tMessage" required aria-required="true"></textarea></div>
-          <div style="display:none;" aria-hidden="true"><input type="text" name="hp" id="hp_tryout" tabindex="-1" autocomplete="off"></div>
-          <button class="btn btn-primary" onclick="submitTryoutContact()">Send</button>
-        </div>
+        <p style="color:var(--gray-700);font-size:0.9rem;margin-bottom:1.2rem;">Have a question before you sign up? Send it over and we'll get back to you.</p>
+        <a href="https://mvprospectsnh.byga.net/f/lwzmftkkul" target="_blank" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Contact Us</a>
       </div>
     </div>
   </section>
@@ -1118,7 +1053,8 @@
       <a href="https://book.runswiftapp.com/facilities/mvp-training-facility/lessons" target="_blank" class="btn btn-primary swift-btn" style="margin-bottom:2rem;display:inline-block;">Browse Instructors and Book on Swift</a>
 
       <h3 style="font-size:1.1rem;margin-bottom:0.6rem;">Need help picking an instructor?</h3>
-      <p style="color:var(--gray-700);font-size:0.95rem;">Not sure which instructor is the best fit or who has open availability? Email us at <a href="mailto:training@MVPTrainingFacility.com" style="color:var(--blue);">training@MVPTrainingFacility.com</a> and we'll help find the right match.</p>
+      <p style="color:var(--gray-700);font-size:0.95rem;margin-bottom:1rem;">Not sure which instructor is the best fit or who has open availability? Send us a quick question and we'll help find the right match.</p>
+      <a href="https://mvprospectsnh.byga.net/f/oagjrgxjys" target="_blank" class="btn btn-primary swift-btn" style="display:inline-block;">Have Questions? Ask Us</a>
     </div>
   </section>
 </div>
@@ -1232,28 +1168,10 @@
         </div>
       </div>
       <div class="contact-form-card fade-in">
-        <h3>Send a Message</h3>
-        <div id="aboutContactError" class="form-error" role="alert"></div>
-        <div id="aboutContactSuccess" class="form-success" role="status">Message sent! We'll be in touch soon.</div>
-        <div id="aboutContactForm">
-          <p style="font-size:0.75rem;color:var(--gray-400);margin-bottom:1rem;">Please complete this form as a parent or guardian on behalf of your player.</p>
-          <div class="form-group"><label for="aName">Name *</label><input type="text" placeholder="Your name" id="aName" required aria-required="true"></div>
-          <div class="form-group"><label for="aEmail">Email *</label><input type="email" placeholder="email@example.com" id="aEmail" required aria-required="true"></div>
-          <div class="form-group">
-            <label for="aSubject">Subject</label>
-            <select id="aSubject">
-              <option value="">Select a topic</option>
-              <option>Tryouts</option>
-              <option>Private Lessons</option>
-              <option>Clinics</option>
-              <option>Facility Rental</option>
-              <option>General Question</option>
-            </select>
-          </div>
-          <div class="form-group"><label for="aMessage">Message *</label><textarea placeholder="Your message..." id="aMessage" required aria-required="true"></textarea></div>
-          <div style="display:none;" aria-hidden="true"><input type="text" name="hp" id="hp_about" tabindex="-1" autocomplete="off"></div>
-          <button class="btn btn-primary" style="width:100%;" onclick="submitAboutContact()">Send Message</button>
-        </div>
+        <h3>Contact Options</h3>
+        <p style="color:var(--gray-700);font-size:0.9rem;margin-bottom:1.5rem;">Pick the option below that fits, and it'll take you straight to the right form.</p>
+        <a href="https://mvprospectsnh.byga.net/f/lwzmftkkul" target="_blank" class="btn btn-primary" style="width:100%;text-align:center;display:block;margin-bottom:0.9rem;">Contact Us</a>
+        <a href="https://mvprospectsnh.byga.net/f/oagjrgxjys" target="_blank" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Ask About Private Lessons</a>
       </div>
     </div>
   </section>
@@ -1417,46 +1335,6 @@
     var isOpen = document.getElementById('mobileMenu').classList.toggle('open');
     var btn = document.querySelector('.nav-hamburger');
     if (btn) btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-  }
-
-  /* FORMS */
-  function sendEmail(to, subject, body, successId, formId) {
-    // Wire EmailJS here: emailjs.send('SERVICE_ID','TEMPLATE_ID',{to_email:to,subject:subject,message:body});
-    document.getElementById(formId).style.display = 'none';
-    document.getElementById(successId).style.display = 'block';
-  }
-  function showErr(id, msg) { var e=document.getElementById(id); e.textContent=msg; e.style.display='block'; }
-
-  function submitHomeContact() {
-    if (document.getElementById('hp_home').value) return;
-    var name=document.getElementById('hName').value.trim();
-    var email=document.getElementById('hEmail').value.trim();
-    var subject=document.getElementById('hSubject').value;
-    var msg=document.getElementById('hMessage').value.trim();
-    if (!name||!email||!msg) { showErr('homeContactError','Please fill in all required fields.'); return; }
-    document.getElementById('homeContactError').style.display='none';
-    sendEmail('info@mvpbaseballnh.com','Contact: '+subject,'Name: '+name+'\nEmail: '+email+'\nSubject: '+subject+'\nMessage: '+msg,'homeContactSuccess','homeContactForm');
-  }
-
-  function submitTryoutContact() {
-    if (document.getElementById('hp_tryout').value) return;
-    var name=document.getElementById('tName').value.trim();
-    var email=document.getElementById('tEmail').value.trim();
-    var msg=document.getElementById('tMessage').value.trim();
-    if (!name||!email||!msg) { showErr('tryoutContactError','Please fill in all required fields.'); return; }
-    document.getElementById('tryoutContactError').style.display='none';
-    sendEmail('info@mvpbaseballnh.com','Tryout Question','Name: '+name+'\nEmail: '+email+'\nMessage: '+msg,'tryoutContactSuccess','tryoutContactForm');
-  }
-
-  function submitAboutContact() {
-    if (document.getElementById('hp_about').value) return;
-    var name=document.getElementById('aName').value.trim();
-    var email=document.getElementById('aEmail').value.trim();
-    var subject=document.getElementById('aSubject').value;
-    var msg=document.getElementById('aMessage').value.trim();
-    if (!name||!email||!msg) { showErr('aboutContactError','Please fill in all required fields.'); return; }
-    document.getElementById('aboutContactError').style.display='none';
-    sendEmail('info@mvpbaseballnh.com','Contact: '+subject,'Name: '+name+'\nEmail: '+email+'\nSubject: '+subject+'\nMessage: '+msg,'aboutContactSuccess','aboutContactForm');
   }
 
   /* ── FACEBOOK SDK ── */
