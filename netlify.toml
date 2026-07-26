@@ -10,10 +10,9 @@
 # Internal links point to the .html files directly (so the site still works
 # when tested locally with a plain static server, which doesn't understand
 # extensionless URLs). These redirects clean up the address bar on the live
-# site: visiting /tryouts.html sends a real 301 to /tryouts. Netlify already
-# serves /tryouts from tryouts.html on its own, this just makes the .html
-# version redirect instead of being a second valid address for the same page.
-# index.html needs its own rule first since it should go to "/", not "/index".
+# site: visiting /tryouts.html sends a real 301 to /tryouts. A wildcard rule
+# (/*.html -> /:splat) was tried first but did not fire reliably on Netlify,
+# so each page gets its own explicit rule instead, which does work.
 [[redirects]]
   from = "/index.html"
   to = "/"
@@ -21,7 +20,37 @@
   force = true
 
 [[redirects]]
-  from = "/*.html"
-  to = "/:splat"
+  from = "/teams.html"
+  to = "/teams"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tryouts.html"
+  to = "/tryouts"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/lessons.html"
+  to = "/lessons"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/clinics.html"
+  to = "/clinics"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/about.html"
+  to = "/about"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/privacy.html"
+  to = "/privacy"
   status = 301
   force = true
