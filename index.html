@@ -164,6 +164,10 @@
 
   .page { display: none; padding-top: var(--nav-h); min-height: 100vh; }
   .page.active { display: block; }
+  /* No-JS fallback: if a nav link's real #page-x anchor is followed (JS disabled),
+     show that page and hide the default active page so they don't both show at once. */
+  .page:target { display: block; }
+  body:has(.page:target) .page.active:not(:target) { display: none; }
 
   /* SECTION HEADER with diagonal stripe */
   .section-header {
@@ -824,16 +828,16 @@
     <span style="display:none;font-family:'Oswald',sans-serif;font-size:1.2rem;font-weight:700;color:var(--blue);">MV PROSPECTS</span>
   </div>
   <ul class="nav-links">
-    <li><a href="#" onclick="showPage('home'); return false;">Home</a></li>
+    <li><a href="#page-home" onclick="showPage('home'); return false;">Home</a></li>
     <li>
       <button onclick="showPage('teams')" aria-haspopup="true" aria-controls="teamsDropdown">Teams ▾</button>
       <div class="nav-dropdown" id="teamsDropdown"></div>
     </li>
-    <li><a href="#" onclick="showPage('tryouts'); return false;">Tryouts</a></li>
+    <li><a href="#page-tryouts" onclick="showPage('tryouts'); return false;">Tryouts</a></li>
     <li><a href="https://book.runswiftapp.com/facilities/mvp-training-facility" target="_blank">Facility</a></li>
-    <li><a href="#" onclick="showPage('lessons'); return false;">Lessons</a></li>
-    <li><a href="#" onclick="showPage('clinics'); return false;">Clinics</a></li>
-    <li><a href="#" onclick="showPage('about'); return false;">About Us</a></li>
+    <li><a href="#page-lessons" onclick="showPage('lessons'); return false;">Lessons</a></li>
+    <li><a href="#page-clinics" onclick="showPage('clinics'); return false;">Clinics</a></li>
+    <li><a href="#page-about" onclick="showPage('about'); return false;">About Us</a></li>
   </ul>
   <button class="nav-hamburger" onclick="toggleMobile()" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
     <span></span><span></span><span></span>
@@ -841,19 +845,19 @@
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#" onclick="showPage('home'); toggleMobile(); return false;">Home</a>
+  <a href="#page-home" onclick="showPage('home'); toggleMobile(); return false;">Home</a>
   <button class="mobile-teams-toggle" onclick="toggleMobileTeams()" aria-expanded="false" aria-controls="mobileTeamsSubmenu" style="display:flex;padding:0.85rem 1.5rem;width:100%;background:none;border:none;border-bottom:1px solid rgba(255,255,255,0.08);">
     <span>Teams</span>
     <span class="mobile-chevron" id="mobileChevron" aria-hidden="true">&#9660;</span>
   </button>
   <div class="mobile-submenu" id="mobileTeamsSubmenu">
-    <a href="#" onclick="showPage('teams'); toggleMobile(); return false;" style="font-weight:600;color:rgba(255,255,255,0.9);">All Teams</a>
+    <a href="#page-teams" onclick="showPage('teams'); toggleMobile(); return false;" style="font-weight:600;color:rgba(255,255,255,0.9);">All Teams</a>
   </div>
-  <a href="#" onclick="showPage('tryouts'); toggleMobile(); return false;">Tryouts</a>
+  <a href="#page-tryouts" onclick="showPage('tryouts'); toggleMobile(); return false;">Tryouts</a>
   <a href="https://book.runswiftapp.com/facilities/mvp-training-facility" target="_blank" onclick="toggleMobile()">Facility</a>
-  <a href="#" onclick="showPage('lessons'); toggleMobile(); return false;">Lessons</a>
-  <a href="#" onclick="showPage('clinics'); toggleMobile(); return false;">Clinics</a>
-  <a href="#" onclick="showPage('about'); toggleMobile(); return false;">About Us</a>
+  <a href="#page-lessons" onclick="showPage('lessons'); toggleMobile(); return false;">Lessons</a>
+  <a href="#page-clinics" onclick="showPage('clinics'); toggleMobile(); return false;">Clinics</a>
+  <a href="#page-about" onclick="showPage('about'); toggleMobile(); return false;">About Us</a>
 </div>
 
 <main id="main-content" tabindex="-1">
@@ -881,10 +885,10 @@
   </section>
 
   <div class="stats-bar">
-    <div class="stat-item"><span class="stat-num" data-target="16">0</span><span class="stat-label">Active Teams</span></div>
-    <div class="stat-item"><span class="stat-num" data-target="300" data-suffix="+">0</span><span class="stat-label">Players Developed</span></div>
-    <div class="stat-item"><span class="stat-num" data-target="13">0</span><span class="stat-label">Cooperstown Trips</span></div>
-    <div class="stat-item"><span class="stat-num" data-target="2014" data-start="1990">0</span><span class="stat-label">Year Founded</span></div>
+    <div class="stat-item"><span class="stat-num" data-target="16">16</span><span class="stat-label">Active Teams</span></div>
+    <div class="stat-item"><span class="stat-num" data-target="300" data-suffix="+">300+</span><span class="stat-label">Players Developed</span></div>
+    <div class="stat-item"><span class="stat-num" data-target="13">13</span><span class="stat-label">Cooperstown Trips</span></div>
+    <div class="stat-item"><span class="stat-num" data-target="2014" data-start="1990">2014</span><span class="stat-label">Year Founded</span></div>
   </div>
 
   <!-- About split -->
@@ -894,7 +898,7 @@
         <div class="section-header"><h2>From Nashua to Cooperstown</h2></div>
         <p style="color:var(--gray-700);margin-bottom:1.2rem;font-size:0.95rem;">The MVProspects started in 2014 as the Greater Nashua Prospects, a local AAU club with one goal: give kids in southern New Hampshire a real shot at competitive travel ball without the sky-high costs.</p>
         <p style="color:var(--gray-700);margin-bottom:1.5rem;font-size:0.95rem;">Ten years later there are 16 teams, 13 Cooperstown trips, and our own training facility. The name has changed. The mission hasn't.</p>
-        <a href="#" class="btn btn-outline-blue" onclick="showPage('about'); return false;">Read Our Full Story</a>
+        <a href="#page-about" class="btn btn-outline-blue" onclick="showPage('about'); return false;">Read Our Full Story</a>
       </div>
       <div class="split-img img-zoom" style="overflow:hidden;border-radius:6px;">
         <img src="assets/cooperstown1.webp" onerror="this.onerror=null;this.src='assets/cooperstown1.jpg';" style="width:100%;height:100%;object-fit:cover;" loading="lazy" alt="MV Prospects at Cooperstown">
@@ -1283,12 +1287,12 @@
     <div class="footer-two-col">
     <div class="footer-col">
       <h4>Pages</h4>
-      <a href="#" onclick="showPage('home'); return false;">Home</a>
-      <a href="#" onclick="showPage('about'); return false;">About Us</a>
-      <a href="#" onclick="showPage('teams'); return false;">Teams</a>
-      <a href="#" onclick="showPage('tryouts'); return false;">Tryouts</a>
-      <a href="#" onclick="showPage('lessons'); return false;">Lessons</a>
-      <a href="#" onclick="showPage('clinics'); return false;">Clinics</a>
+      <a href="#page-home" onclick="showPage('home'); return false;">Home</a>
+      <a href="#page-about" onclick="showPage('about'); return false;">About Us</a>
+      <a href="#page-teams" onclick="showPage('teams'); return false;">Teams</a>
+      <a href="#page-tryouts" onclick="showPage('tryouts'); return false;">Tryouts</a>
+      <a href="#page-lessons" onclick="showPage('lessons'); return false;">Lessons</a>
+      <a href="#page-clinics" onclick="showPage('clinics'); return false;">Clinics</a>
       <a href="https://book.runswiftapp.com/facilities/mvp-training-facility" target="_blank">Facility</a>
     </div>
     <div class="footer-col footer-mobile-contact">
@@ -1302,7 +1306,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <span>&copy; 2026 MV Prospects Baseball &middot; Merrimack Valley Prospects LLC &middot; <a href="#" onclick="showPage('privacy'); return false;">Privacy Policy</a></span>
+    <span>&copy; 2026 MV Prospects Baseball &middot; Merrimack Valley Prospects LLC &middot; <a href="#page-privacy" onclick="showPage('privacy'); return false;">Privacy Policy</a></span>
     <span>Site by <a href="https://baselinestudio.org" target="_blank">Baseline Studio</a></span>
   </div>
 </footer>
@@ -1347,7 +1351,7 @@
   function buildTeamsDropdown() {
     const dd = document.getElementById('teamsDropdown');
     if (!dd) return;
-    const allTeamsLink = `<a href="#" onclick="showPage('teams'); return false;" style="font-weight:600;color:var(--blue);">All Teams</a>`;
+    const allTeamsLink = `<a href="#page-teams" onclick="showPage('teams'); return false;" style="font-weight:600;color:var(--blue);">All Teams</a>`;
     dd.innerHTML = allTeamsLink + TEAMS.map(t =>
       `<a href="${t.pgUrl}" target="_blank">${t.age}</a>`
     ).join('');
@@ -1529,6 +1533,16 @@
   buildTeamsDropdown();
   setTimeout(initAnimations, 100);
   buildTeamsGrid();
+
+  /* If the page loads directly on a #page-x anchor (deep link, or the no-JS
+     :target fallback being followed with JS actually available), sync JS
+     state to match so the right page is fully built, not just visible. */
+  (function() {
+    var hash = window.location.hash.replace('#page-', '');
+    if (hash && document.getElementById('page-' + hash)) {
+      showPage(hash);
+    }
+  })();
 </script>
 
 <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
@@ -1536,7 +1550,7 @@
 </button>
 
 <div id="cookieBanner" style="display:none;" class="cookie-banner">
-  <p>This site embeds a Facebook feed which may set cookies. We do not use our own tracking cookies. See our <a href="#" onclick="showPage('privacy'); closeCookieBanner(); return false;">Privacy Policy</a>.</p>
+  <p>This site embeds a Facebook feed which may set cookies. We do not use our own tracking cookies. See our <a href="#page-privacy" onclick="showPage('privacy'); closeCookieBanner(); return false;">Privacy Policy</a>.</p>
   <button class="cookie-accept" onclick="closeCookieBanner()">Got It</button>
 </div>
 
