@@ -1,0 +1,48 @@
+<!-- No-JS fallback: hidden checkbox drives the mobile menu open/closed via CSS
+     when JavaScript isn't available. Harmless and inert once .js is added to <html>. -->
+<input type="checkbox" id="navToggle" class="visually-hidden-checkbox" aria-hidden="true">
+
+<nav class="nav" aria-label="Primary">
+  <a href="index.html" class="nav-logo">
+    <img src="assets/mvplogo.avif"
+         alt="MV Prospects Baseball"
+         onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+    <span style="display:none;font-family:'Oswald',sans-serif;font-size:1.2rem;font-weight:700;color:var(--blue);">MV PROSPECTS</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" data-page-link="home">Home</a></li>
+    <li>
+      <a href="teams.html" data-page-link="teams" aria-haspopup="true" aria-controls="teamsDropdown">Teams &#9662;</a>
+      <div class="nav-dropdown" id="teamsDropdown"></div>
+    </li>
+    <li><a href="tryouts.html" data-page-link="tryouts">Tryouts</a></li>
+    <li><a href="https://book.runswiftapp.com/facilities/mvp-training-facility" target="_blank">Facility</a></li>
+    <li><a href="lessons.html" data-page-link="lessons">Lessons</a></li>
+    <li><a href="clinics.html" data-page-link="clinics">Clinics</a></li>
+    <li><a href="about.html" data-page-link="about">About Us</a></li>
+  </ul>
+  <button class="nav-hamburger js-only-hamburger" onclick="toggleMobile()" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
+    <span></span><span></span><span></span>
+  </button>
+  <label for="navToggle" class="nav-hamburger no-js-only-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </label>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" data-page-link="home">Home</a>
+  <button class="mobile-teams-toggle" onclick="toggleMobileTeams()" aria-expanded="false" aria-controls="mobileTeamsSubmenu" style="display:flex;padding:0.85rem 1.5rem;width:100%;background:none;border:none;border-bottom:1px solid rgba(255,255,255,0.08);">
+    <span>Teams</span>
+    <span class="mobile-chevron" id="mobileChevron" aria-hidden="true">&#9660;</span>
+  </button>
+  <input type="checkbox" id="navTeamsToggle" class="visually-hidden-checkbox" aria-hidden="true">
+  <label for="navTeamsToggle" class="no-js-only-teams-label" style="padding:0.6rem 1.5rem;font-family:'Oswald',sans-serif;font-size:0.9rem;letter-spacing:0.05em;text-transform:uppercase;color:rgba(255,255,255,0.8);border-bottom:1px solid rgba(255,255,255,0.08);cursor:pointer;">Show Teams &#9660;</label>
+  <div class="mobile-submenu" id="mobileTeamsSubmenu">
+    <a href="teams.html" data-page-link="teams" style="font-weight:600;color:rgba(255,255,255,0.9);">All Teams</a>
+  </div>
+  <a href="tryouts.html" data-page-link="tryouts">Tryouts</a>
+  <a href="https://book.runswiftapp.com/facilities/mvp-training-facility" target="_blank">Facility</a>
+  <a href="lessons.html" data-page-link="lessons">Lessons</a>
+  <a href="clinics.html" data-page-link="clinics">Clinics</a>
+  <a href="about.html" data-page-link="about">About Us</a>
+</div>

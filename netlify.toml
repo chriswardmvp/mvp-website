@@ -1,8 +1,56 @@
 # Netlify configuration for a plain HTML/CSS site
-# No build step is needed — Netlify just publishes the files as-is.
+# No build step is needed, Netlify just publishes the files as-is.
 
 [build]
   # Serve the site from the repository root.
   publish = "."
   # No build command for a static HTML site.
   command = ""
+
+# Internal links point to the .html files directly (so the site still works
+# when tested locally with a plain static server, which doesn't understand
+# extensionless URLs). These redirects clean up the address bar on the live
+# site: visiting /tryouts.html sends a real 301 to /tryouts. A wildcard rule
+# (/*.html -> /:splat) was tried first but did not fire reliably on Netlify,
+# so each page gets its own explicit rule instead, which does work.
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/teams.html"
+  to = "/teams"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/tryouts.html"
+  to = "/tryouts"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/lessons.html"
+  to = "/lessons"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/clinics.html"
+  to = "/clinics"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/about.html"
+  to = "/about"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/privacy.html"
+  to = "/privacy"
+  status = 301
+  force = true
