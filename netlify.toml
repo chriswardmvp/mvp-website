@@ -1,5 +1,7 @@
 # Netlify configuration for a plain HTML/CSS site
-# No build step is needed — Netlify just publishes the files as-is.
+# No build step is needed, Netlify just publishes the files as-is.
+# Netlify serves clean URLs for .html files by default (e.g. teams.html is
+# also reachable at /teams), so no extra config is needed for that.
 
 [build]
   # Serve the site from the repository root.
