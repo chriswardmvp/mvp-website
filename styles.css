@@ -434,11 +434,6 @@ main { padding-top: var(--nav-h); min-height: 100vh; display: block; }
   display: flex; justify-content: space-between; align-items: center;
 }
 .clinic-header h3 { color: var(--white); font-size: 1.1rem; }
-.clinic-badge {
-  background: var(--gold); color: var(--black);
-  font-family: 'Oswald', sans-serif; font-size: 0.7rem; font-weight: 700;
-  padding: 0.25rem 0.6rem; border-radius: 3px; letter-spacing: 0.08em; text-transform: uppercase;
-}
 .clinic-body { padding: 1.5rem; }
 /* Accordion behavior: clinic-header becomes a <summary>, native and accessible */
 details.clinic-card summary { cursor: pointer; list-style: none; }
