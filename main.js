@@ -71,6 +71,16 @@ function toggleMobileTeams() {
   document.querySelector('.mobile-teams-toggle').setAttribute('aria-expanded', isOpen ? 'true' : 'false');
 }
 
+/* Instructor bio read-more toggle (Lessons page) */
+function toggleInstructorBio(btn) {
+  var card = btn.closest('.instructor-card');
+  var bio = card.querySelector('.instructor-bio-clamp');
+  var awards = card.querySelector('.instructor-awards');
+  var isExpanded = bio.classList.toggle('expanded');
+  if (awards) awards.style.display = isExpanded ? 'block' : 'none';
+  btn.textContent = isExpanded ? 'Show Less' : 'Read More';
+}
+
 /* ── SHARED HEADER/FOOTER: load partials, then wire them up ── */
 function loadPartial(url, mountId, callback) {
   var mount = document.getElementById(mountId);
