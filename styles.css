@@ -410,6 +410,18 @@ main { padding-top: var(--nav-h); min-height: 100vh; display: block; }
 .instructor-awards ul { list-style: none; }
 .instructor-awards li { font-size: 0.78rem; color: var(--gray-700); padding: 0.18rem 0; }
 .instructor-awards li::before { content: '· '; color: var(--blue); font-weight: 700; }
+.instructor-bio-clamp {
+  max-height: 4.9em; overflow: hidden;
+}
+.instructor-bio-clamp.expanded {
+  max-height: none; overflow: visible;
+}
+.instructor-read-more {
+  background: none; border: none; padding: 0;
+  color: var(--blue); font-weight: 600; font-size: 0.85rem;
+  cursor: pointer; display: block; margin-top: 0.3rem; margin-bottom: 0.8rem;
+}
+.instructor-read-more:hover { text-decoration: underline; }
 
 /* CLINICS */
 .clinic-card {
@@ -428,6 +440,14 @@ main { padding-top: var(--nav-h); min-height: 100vh; display: block; }
   padding: 0.25rem 0.6rem; border-radius: 3px; letter-spacing: 0.08em; text-transform: uppercase;
 }
 .clinic-body { padding: 1.5rem; }
+/* Accordion behavior: clinic-header becomes a <summary>, native and accessible */
+details.clinic-card summary { cursor: pointer; list-style: none; }
+details.clinic-card summary::-webkit-details-marker { display: none; }
+details.clinic-card summary::marker { content: ''; }
+.clinic-chevron { color: rgba(255,255,255,0.85); transition: transform 0.2s ease; display: inline-block; }
+details.clinic-card[open] .clinic-chevron { transform: rotate(180deg); }
+/* Explicit hide/show instead of relying only on implicit <details> UA behavior */
+details.clinic-card:not([open]) .clinic-body { display: none; }
 .clinic-body p { font-size: 0.88rem; color: var(--gray-700); margin-bottom: 1rem; }
 .clinic-meta { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
 .clinic-meta-item { font-size: 0.8rem; color: var(--gray-700); display: flex; align-items: center; gap: 0.35rem; }
@@ -503,7 +523,6 @@ main { padding-top: var(--nav-h); min-height: 100vh; display: block; }
   width: max-content;
   animation: galleryScroll 32s linear infinite;
 }
-.gallery-track:hover { animation-play-state: paused; }
 .gallery-track img {
   height: 280px; width: 380px;
   object-fit: cover; border-radius: 6px;
