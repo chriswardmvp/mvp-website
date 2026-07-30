@@ -550,6 +550,9 @@ details.clinic-card:not([open]) .clinic-body { display: none; }
   /* Swift buttons smaller on mobile */
   .swift-btn { font-size: 0.72rem !important; padding: 0.6rem 1rem !important; letter-spacing: 0.04em !important; }
 
+  /* Full-width CTA buttons on mobile only, desktop layout stays as authored */
+  .mobile-full-btn { display: block !important; width: 100% !important; text-align: center !important; }
+
   .footer-grid { grid-template-columns: 1fr !important; text-align: center; }
   .footer-two-col { display: grid !important; grid-template-columns: 1fr; gap: 1.5rem; }
   .footer-contact-col { display: none; }
