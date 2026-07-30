@@ -48,6 +48,12 @@ pages) — don't load it by default.
   .stagger elements.
 - Test every nav/footer link and mobile view every session.
 - Run node --check on extracted script blocks before delivery.
+- Any new photo asset added to the project (client-supplied JPG/PNG) needs a
+  generated .webp sibling before it ships: resize to a sane max dimension
+  (~1600px on the long edge) if larger, save at quality ~80, and reference it
+  with the onerror-fallback-to-original pattern already used site-wide. Do
+  this automatically whenever a new image file shows up, don't wait to be
+  asked.
 
 ## Standing design & copy rules
 - No eyebrow labels above section headings.

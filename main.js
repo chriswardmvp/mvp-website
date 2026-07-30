@@ -81,6 +81,14 @@ function toggleInstructorBio(btn) {
   btn.textContent = isExpanded ? 'Show Less' : 'Read More';
 }
 
+/* Membership tier read-more toggle (Facility page) */
+function toggleMembershipBio(btn) {
+  var card = btn.closest('.facility-feature');
+  var bio = card.querySelector('.instructor-bio-clamp');
+  var isExpanded = bio.classList.toggle('expanded');
+  btn.textContent = isExpanded ? 'Show Less' : 'Read More';
+}
+
 /* ── SHARED HEADER/FOOTER: load partials, then wire them up ── */
 function loadPartial(url, mountId, callback) {
   var mount = document.getElementById(mountId);
