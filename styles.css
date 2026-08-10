@@ -417,9 +417,11 @@ main { padding-top: var(--nav-h); min-height: 100vh; display: block; }
   max-height: none; overflow: visible;
 }
 .instructor-read-more {
-  background: none; border: none; padding: 0;
+  /* padding (not margin) so the tap target clears the 24px WCAG 2.5.8 minimum;
+     margins are trimmed to match so the card layout is unchanged */
+  background: none; border: none; padding: 0.3rem 0;
   color: var(--blue); font-weight: 600; font-size: 0.85rem;
-  cursor: pointer; display: block; margin-top: 0.3rem; margin-bottom: 0.8rem;
+  cursor: pointer; display: block; margin-top: 0; margin-bottom: 0.5rem;
 }
 .instructor-read-more:hover { text-decoration: underline; }
 
@@ -476,7 +478,7 @@ details.clinic-card:not([open]) .clinic-body { display: none; }
 .footer-brand p { font-size: 0.82rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
 .footer-col h4 {
   font-family: 'Oswald', sans-serif; font-size: 0.8rem; font-weight: 600;
-  letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.9rem;
+  letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.62); margin-bottom: 0.9rem;
 }
 .footer-col a { display: block; font-size: 0.85rem; color: rgba(255,255,255,0.7); padding: 0.25rem 0; transition: color 0.15s; }
 .footer-col a:hover { color: var(--white); }
@@ -619,6 +621,13 @@ details.clinic-card:not([open]) .clinic-body { display: none; }
 
 
 /* ANIMATIONS */
+/* Without JS nothing adds .visible, so the reveal classes must not hide
+   content in the first place. Keep this rule above the definitions below. */
+html:not(.js) .fade-in,
+html:not(.js) .fade-in-left,
+html:not(.js) .fade-in-right {
+  opacity: 1 !important; transform: none !important;
+}
 .fade-in {
   opacity: 0; transform: translateY(22px);
   transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
