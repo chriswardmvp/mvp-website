@@ -79,6 +79,7 @@ function toggleInstructorBio(btn) {
   var isExpanded = bio.classList.toggle('expanded');
   if (awards) awards.style.display = isExpanded ? 'block' : 'none';
   btn.textContent = isExpanded ? 'Show Less' : 'Read More';
+  btn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
 }
 
 /* Membership tier read-more toggle (Facility page) */
@@ -87,7 +88,18 @@ function toggleMembershipBio(btn) {
   var bio = card.querySelector('.instructor-bio-clamp');
   var isExpanded = bio.classList.toggle('expanded');
   btn.textContent = isExpanded ? 'Show Less' : 'Read More';
+  btn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
 }
+
+/* Escape closes the mobile menu, and focus returns to the toggle that opened it */
+document.addEventListener('keydown', function(e) {
+  if (e.key !== 'Escape') return;
+  var menu = document.getElementById('mobileMenu');
+  if (!menu || !menu.classList.contains('open')) return;
+  toggleMobile();
+  var btn = document.querySelector('.nav-hamburger.js-only-hamburger');
+  if (btn) btn.focus();
+});
 
 /* ── SHARED HEADER/FOOTER: load partials, then wire them up ── */
 function loadPartial(url, mountId, callback) {
@@ -99,7 +111,10 @@ function loadPartial(url, mountId, callback) {
   }).catch(function() {
     /* If this fails (e.g. opened via file:// without a server), the page
        still works, it just won't have a nav/footer. See project notes on
-       testing via a local server, not by double-clicking the HTML file. */
+       testing via a local server, not by double-clicking the HTML file.
+       Still run the callback so page content that depends on it (the
+       reveal animations) isn't left stuck at opacity:0. */
+    if (callback) callback();
   });
 }
 
@@ -182,21 +197,25 @@ if (document.getElementById('fbPageContainer')) {
   }, 5000);
 }
 
-/* INTERSECTION OBSERVER - fade-in animations */
-var observer = new IntersectionObserver(function(entries) {
+/* INTERSECTION OBSERVER - fade-in animations.
+   .fade-in starts at opacity:0, so if the observer is unavailable the content
+   would never appear. Feature-detect and fall back to showing everything
+   rather than risking an invisible page. */
+var REVEAL_SELECTOR = '.fade-in, .fade-in-left, .fade-in-right, .section-header';
+var supportsIO = typeof IntersectionObserver === 'function';
+var observer = supportsIO ? new IntersectionObserver(function(entries) {
   entries.forEach(function(entry) {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
     }
   });
-}, { threshold: 0.12 });
+}, { threshold: 0.12 }) : null;
 
 function initAnimations() {
-  document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(function(el) {
-    observer.observe(el);
-  });
-  document.querySelectorAll('.section-header').forEach(function(el) {
-    observer.observe(el);
+  document.querySelectorAll(REVEAL_SELECTOR).forEach(function(el) {
+    if (observer) observer.observe(el);
+    else el.classList.add('visible');
   });
 }
 
@@ -223,7 +242,10 @@ function runCountUp() {
   });
 }
 var statsBar = document.querySelector('.stats-bar');
-if (statsBar) {
+if (statsBar && !supportsIO) {
+  /* Numbers are already in the markup, so just skip straight to the end state. */
+  runCountUp();
+} else if (statsBar) {
   var statsObs = new IntersectionObserver(function(entries) {
     if (entries[0].isIntersecting) { runCountUp(); }
   }, { threshold: 0.4 });
@@ -234,3 +256,6 @@ if (statsBar) {
 loadPartial('partials/nav.html', 'site-header', initNav);
 loadPartial('partials/footer.html', 'site-footer', initFooter);
 buildTeamsGrid();
+/* Reveal page content immediately rather than waiting on the partial fetch,
+   so a slow or failed nav/footer request never leaves the body invisible. */
+initAnimations();
