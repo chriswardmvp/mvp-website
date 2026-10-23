@@ -1,21 +1,20 @@
 /* ── TEAMS DATA ── */
 const TEAMS = [
-  { age:'9U Black',  coach:'Randy Medeiros',   pgUrl:'https://www.perfectgame.org/PGBA/Team/default.aspx?orgid=47156&orgteamid=272155&team=1057125&Year=2026' },
-  { age:'9U Royal',  coach:'Casey Marques',    pgUrl:'https://www.perfectgame.org/PGBA/Team/default.aspx?orgid=47156&orgteamid=272156&team=1057126&Year=2026' },
-  { age:'10U Black', coach:'Vince Lehman',      pgUrl:'https://www.perfectgame.org/PGBA/Team/default.aspx?orgid=47156&orgteamid=272157&team=1057129&Year=2026' },
-  { age:'10U Royal', coach:'Jim Patierno',      pgUrl:'https://www.perfectgame.org/PGBA/Team/default.aspx?orgid=47156&orgteamid=272304&team=1057130&Year=2026' },
-  { age:'11U Black', coach:'Andrew Ciardelli',  pgUrl:'https://www.perfectgame.org/PGBA/Team/default.aspx?orgid=47156&orgteamid=272305&team=1057131&Year=2026' },
-  { age:'11U Royal', coach:'Chris Lupoli',      pgUrl:'https://www.perfectgame.org/PGBA/Team/default.aspx?orgid=47156&orgteamid=272306&team=1057132&Year=2026' },
-  { age:'12U Black', coach:'Josh McCallister',  pgUrl:'https://www.perfectgame.org/PGBA/Team/default.aspx?orgid=47156&orgteamid=272309&team=1057133&Year=2026' },
-  { age:'12U Royal', coach:'Ryan Pelletier',    pgUrl:'https://www.perfectgame.org/PGBA/Team/default.aspx?orgid=47156&orgteamid=272310&team=1057134&Year=2026' },
-  { age:'12U White', coach:'Mike Gagnon',       pgUrl:'https://www.perfectgame.org/PGBA/Team/default.aspx?orgid=47156&orgteamid=272312&team=1057135&Year=2026' },
-  { age:'13U Black', coach:'Jeff Nichols',      pgUrl:'https://www.perfectgame.org/PGBA/Team/default.aspx?orgid=47156&orgteamid=272313&team=1057136&Year=2026' },
-  { age:'13U Royal', coach:'Rob Smith',         pgUrl:'https://www.perfectgame.org/PGBA/Team/default.aspx?orgid=47156&orgteamid=272314&team=1057137&Year=2026' },
-  { age:'13U White', coach:'Dean Adams',        pgUrl:'https://www.perfectgame.org/PGBA/Team/default.aspx?orgid=47156&orgteamid=272315&team=1057138&Year=2026' },
-  { age:'14U Black', coach:'Jacob Hobart',      pgUrl:'https://www.perfectgame.org/PGBA/Team/default.aspx?orgid=47156&orgteamid=272399&team=1057140&Year=2026' },
-  { age:'14U Royal', coach:'Greg Frink',        pgUrl:'https://www.perfectgame.org/PGBA/Team/default.aspx?orgid=47156&orgteamid=272316&team=1057139&Year=2026' },
-  { age:'15U',       coach:'Jon Juchnevics',    pgUrl:'https://www.perfectgame.org/PGBA/Team/default.aspx?orgid=47156&orgteamid=272317&Year=2026' },
-  { age:'17U',       coach:'Ray DeRusha',       pgUrl:'https://www.perfectgame.org/PGBA/Team/default.aspx?orgid=47156&orgteamid=272318&Year=2026' },
+  { age:'9U Black',     coach:'Casey Marques',       pgUrl:'' },
+  { age:'10U Black',    coach:'Randy Medeiros',      pgUrl:'' },
+  { age:'10U Royal',    coach:'Bryan Harrold',       pgUrl:'' },
+  { age:'11U Black',    coach:'Vince Lehman',        pgUrl:'' },
+  { age:'11U Royal',    coach:'Michael Murray',      pgUrl:'' },
+  { age:'12U Black',    coach:'Andrew Ciardelli',    pgUrl:'' },
+  { age:'12U Royal',    coach:'Chris Lupoli',        pgUrl:'' },
+  { age:'13U Black',    coach:'Josh McCallister',    pgUrl:'' },
+  { age:'13U Royal',    coach:'Ryan Pelletier',      pgUrl:'' },
+  { age:'13U White',    coach:'Dave Zalzal',         pgUrl:'' },
+  { age:'14U Black',    coach:'Jeff Nichols',        pgUrl:'' },
+  { age:'14U Royal',    coach:'Robert Smith',        pgUrl:'' },
+  { age:'14U White',    coach:'Dean Adams',          pgUrl:'' },
+  { age:'16U',          coach:'Jonathan Juchnevics', pgUrl:'' },
+  { age:'14U Softball', coach:'Chris Lupoli',        pgUrl:'' },
 ];
 
 function buildTeamsGrid() {
@@ -28,7 +27,9 @@ function buildTeamsGrid() {
         <div class="team-coach"><strong>Head Coach:</strong> ${t.coach}</div>
       </div>
       <div class="team-actions">
-        <a href="${t.pgUrl}" target="_blank">View Roster &amp; Schedule &nearr;</a>
+        ${t.pgUrl
+          ? `<a href="${t.pgUrl}" target="_blank">View Roster &amp; Schedule &nearr;</a>`
+          : `<span class="team-soon">Roster &amp; Schedule Coming Soon</span>`}
       </div>
     </div>
   `).join('');
@@ -39,7 +40,7 @@ function buildTeamsDropdown() {
   if (!dd) return;
   const allTeamsLink = `<a href="teams.html" style="font-weight:600;color:var(--blue);">All Teams</a>`;
   dd.innerHTML = allTeamsLink + TEAMS.map(t =>
-    `<a href="${t.pgUrl}" target="_blank">${t.age}</a>`
+    t.pgUrl ? `<a href="${t.pgUrl}" target="_blank">${t.age}</a>` : `<a href="teams.html">${t.age}</a>`
   ).join('');
 }
 
@@ -48,7 +49,8 @@ function buildMobileTeamsSubmenu() {
   if (!sub || sub.dataset.built) return;
   TEAMS.forEach(function(t) {
     var a = document.createElement('a');
-    a.href = t.pgUrl; a.target = '_blank';
+    if (t.pgUrl) { a.href = t.pgUrl; a.target = '_blank'; }
+    else a.href = 'teams.html';
     a.textContent = t.age;
     a.style.cssText = 'display:block;padding:0.6rem 2rem;font-size:0.82rem;color:rgba(255,255,255,0.65);border-bottom:1px solid rgba(255,255,255,0.04);font-family:Oswald,sans-serif;letter-spacing:0.05em;text-transform:uppercase;';
     sub.appendChild(a);
