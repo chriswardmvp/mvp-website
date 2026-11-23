@@ -254,7 +254,21 @@ if (statsBar && !supportsIO) {
   statsObs.observe(statsBar);
 }
 
+/* Local YYYY-MM-DD (toISOString would shift the date to UTC) */
+function fmtLocalDate(d) {
+  return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+}
+
+/* Remove time-limited content (e.g. a holiday camp) once its data-hide-on date arrives */
+function hideExpired() {
+  var today = fmtLocalDate(new Date());
+  document.querySelectorAll('[data-hide-on]').forEach(function(el) {
+    if (today >= el.dataset.hideOn) el.remove();
+  });
+}
+
 /* Init: load the shared header and footer into every page */
+hideExpired();
 loadPartial('partials/nav.html', 'site-header', initNav);
 loadPartial('partials/footer.html', 'site-footer', initFooter);
 buildTeamsGrid();
